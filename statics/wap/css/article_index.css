@@ -1,0 +1,416 @@
+@charset "UTF-8";
+
+body {
+	-webkit-font-smoothing: antialiased
+}
+
+.icon_like,.icon_like_d {
+	display: inline-block;
+	width: 2rem;
+	height: 2rem;
+	margin: -.5625rem;
+	background-repeat: no-repeat;
+	background-image: url("../../../images/wenda/sprite.svg?id=201607151330007&version=eia3i4gz6n");
+	background-size: 2rem 23rem;
+	-webkit-transform: scale(.4375);
+	transform: scale(.4375)
+}
+
+.icon_like {
+	background-position: 0 -7.875rem
+}
+
+.icon_like_d {
+	background-position: 0 -18.375rem
+}
+
+.banner {
+	height: 0;
+	padding-top: 45%;
+	margin: 0;
+	border: 0
+}
+
+.banner .ullists {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%
+}
+
+.banner .ullists .li {
+	height: 100%
+}
+
+.banner .ullists .li>a {
+	display: block;
+	position: relative;
+	height: 100%
+}
+
+.banner .ullists .li img {
+	height: 100%
+}
+
+.banner .ullists .mask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: -webkit-gradient(linear,0 0,0 100%,from(rgba(0,0,0,0)),to(rgba(0,0,0,.6)));
+	background: linear-gradient(to bottom,rgba(0,0,0,.2) 0,rgba(0,0,0,.6) 100%);
+	pointer-events: none
+}
+
+.banner .ullists .text {
+	font-size: .75rem;
+	line-height: 1rem;
+	text-align: left;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 1.25rem 3rem 1.25rem 1.25rem;
+	color: #fff
+}
+
+.banner .ullists .text .time {
+	opacity: .7;
+	font-size: .75rem
+}
+
+.banner .ullists .text .tit {
+	font-size: 1rem;
+	font-weight: 700;
+	line-height: 1.25rem;
+	margin-bottom: .5rem
+}
+
+.tab_fix {
+	background: #fff;
+	box-shadow: 0 0 1px #e5e5e5
+}
+
+.article_lists {
+	padding-right: 1.25rem
+}
+
+.article_item {
+	padding: 1.25rem 0;
+	border-bottom: 1px solid #e5e5e5
+}
+
+.article_item a:visited .item_main {
+	color: #9f9f9f
+}
+
+.article_item:last-child {
+	border-bottom: none
+}
+
+.article_item .item_main {
+	margin-bottom: .35rem
+}
+
+.article_box .item_list {
+	padding-left: 0;
+	padding-right: 1rem;
+	min-height: 4.75rem;
+	position: relative
+}
+
+.article_box .item_list::after {
+	content: "";
+	display: block;
+	height: .7775rem
+}
+
+.article_box .item_list .item_minor {
+	max-height: 2rem;
+	line-height: 1rem;
+	margin-bottom: .3rem;
+	color: #999;
+	overflow: hidden
+}
+
+.article_box .item_list .item_other {
+	margin-bottom: 0;
+	color: #9c9fa1;
+	line-height: .9375rem;
+	position: absolute;
+	height: .9375rem;
+	left: 0;
+	right: 1rem;
+	bottom: -.1rem
+}
+
+.article_box .subject .item_list .item_other {
+	position: static
+}
+
+.article_box .subject .item_list:after {
+	display: none
+}
+
+.article_box .subject .item_list {
+	min-height: unset
+}
+
+.article_box .item_other .fr {
+	float: right
+}
+
+.article_box .item_other .view_time {
+	display: inline-block;
+	margin-right: .3125rem;
+	width: .9375rem;
+	height: .9375rem;
+	line-height: .9375rem;
+	background: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve"> <g> <path fill="none" d="M-171.5-276.5c0-14.359-11.641-26-26-26s-26,11.641-26,26c0,6.584,2.452,12.592,6.487,17.173 c-0.481,1.416-0.486,2.633-0.486,2.633s9.92,8.194,20.261,8.194c9.634,0,19.739-8.196,19.739-8.196 c0.008-1.007-0.143-1.906-0.425-2.701C-173.928-263.97-171.5-269.95-171.5-276.5z"/> </g> <g> <path fill="#D7D9D9" d="M30,15.996c0,2.792-5.773,8.751-14,8.751c-8.018,0-14-5.86-14-8.751c0-2.891,6.008-8.742,14-8.742 C24.291,7.253,30.002,13.105,30,15.996L30,15.996L30,15.996z M16.012,8.85c-3.726,0-6.747,3.202-6.747,7.151 c0,3.949,3.02,7.15,6.747,7.15c3.727,0,6.748-3.202,6.748-7.15C22.76,12.051,19.739,8.85,16.012,8.85L16.012,8.85L16.012,8.85z M16.012,8.85"/> <path fill="#D7D9D9" d="M16,11.435c-2.373,0-4.296,2.038-4.296,4.553c0,2.514,1.924,4.553,4.296,4.553 c2.373,0,4.296-2.039,4.296-4.553C20.296,13.473,18.373,11.435,16,11.435L16,11.435L16,11.435z M16,11.435"/> </g> </svg>') 0 -1px;
+	background-size: cover;
+	vertical-align: middle
+}
+
+.article_box .mod_media {
+	width: 4.75rem;
+	height: 4.75rem;
+	position: relative
+}
+
+.article_box .mod_media img {
+	width: 100%;
+	height: 100%
+}
+
+.article_box .mod_media .img_tag {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: .25rem;
+	background: rgba(0,0,0,.5);
+	color: #fff;
+	font-size: .75rem
+}
+
+.article_box .gray .item_main,.article_box .gray .item_minor,.article_box .gray .item_other {
+	color: #999
+}
+
+.subject {
+	overflow-x: scroll;
+	overflow-y: hidden;
+	height: 11.0875rem;
+	background: #f5f5f5;
+	margin: -1px -1.225rem 0;
+	border: 1px solid #e5e5e5;
+	padding: .625rem 0
+}
+
+.subject .item_wrap {
+	width: 30rem;
+	margin: 0 .625rem
+}
+
+.subject .mod_media {
+	width: 100%;
+	height: 6.6875rem
+}
+
+.subject .item_list {
+	padding: .75rem
+}
+
+.subject .pictext .item_main {
+	margin-bottom: 0;
+	font-size: .8125rem;
+	height: 1.9rem;
+	overflow: hidden
+}
+
+.subject .pictext {
+	float: left;
+	width: 11.875rem;
+	margin-right: .625rem;
+	background: #fff;
+	box-shadow: 0 2px 6px rgba(0,0,0,.08)
+}
+
+.subject .more_sub {
+	float: left;
+	width: 4.375rem;
+	height: 10.9375rem;
+	background: url("../../../images/redian/more_sub.png?version=eia3i4gz6n");
+	background-size: cover;
+	box-shadow: 0 2px 6px rgba(0,0,0,.08)
+}
+
+::-webkit-scrollbar {
+	width: 0
+}
+
+.tab {
+	width: 100%;
+	background: #fff
+}
+
+.tab li {
+	float: left;
+	width: 26.33%;
+	margin: 0 3.5%;
+	text-align: center;
+	height: 3rem;
+	line-height: 3rem
+}
+
+.tab li.active {
+	color: #00ae6a;
+	border-bottom: 2px solid
+}
+
+.article_box {
+	margin-top: 0;
+	padding-bottom: 1.875rem;
+	background-color: #fff
+}
+
+.article_box .article_top {
+	padding: 1.25rem 1.25rem 0
+}
+
+.article_box .article_top .title {
+	font-size: 1.25rem;
+	line-height: 1.25;
+	font-weight: 700
+}
+
+.article_box .article_top .tag {
+	padding: .125rem .25rem;
+	vertical-align: bottom;
+	border-radius: .125rem;
+	margin-right: .375rem;
+	color: #00ae66;
+	background-color: #d9f3e8
+}
+
+.article_box .article_top .add_info {
+	margin: .75rem 0 1.25rem;
+	color: #999;
+	font-size: .75rem
+}
+
+.article_box .add_info .date,.article_box .add_info .name,.article_box .add_info .pub {
+	padding-left: .3125rem
+}
+
+.article_box section {
+	padding: 0 1.25rem
+}
+
+.article_box section>p {
+	color: #666;
+	font-size: .875rem;
+	line-height: 1.35714286;
+	padding: .3125rem 0;
+	word-wrap: break-word;
+	word-break: normal
+}
+
+.article_box section>p:first-child {
+	padding: 1rem 0;
+	border-top: 1px solid #e5e5e5
+}
+
+.article_box .like_box {
+	width: 3.75rem;
+	height: 3.75rem;
+	border: 1px solid;
+	color: #999;
+	border-radius: 50%;
+	margin: 1.875rem auto;
+	text-align: center;
+	box-sizing: border-box;
+	padding-top: .675rem
+}
+
+.article_box .like_txt {
+	font-size: .75rem;
+	color: #999
+}
+
+.article_box .like_txt .num {
+	color: #999
+}
+
+.mod_related {
+	border: 0
+}
+
+.mod_related .li_item {
+	border-bottom: 0;
+	line-height: 2
+}
+
+.mod_related .li_item a {
+	color: #2f92d0;
+	text-decoration: underline
+}
+
+.bottom_tab {
+	position: fixed;
+	bottom: 0;
+	z-index: 10;
+	width: 100%;
+	height: 3.125rem;
+	background: #fff;
+	font-size: 0;
+	border-top: 1px solid #d3d3d3
+}
+
+.bottom_tab a {
+	display: inline-block;
+	width: 33.33%;
+	font-size: .625rem;
+	text-align: center;
+	margin-top: .5rem
+}
+
+.bottom_tab a .bottom_icon span {
+	display: inline-block;
+	width: 1.3125rem;
+	height: 1.3125rem;
+	background: url("../../../images/redian/bottom_bar.png?version=eia3i4gz6n") no-repeat;
+	background-size: 100% auto
+}
+
+.bottom_tab a .icon_hot span {
+	background-position: .1rem 0
+}
+
+.bottom_tab a .icon_ask span {
+	background-position: 0 -1.5625rem
+}
+
+.bottom_tab a .icon_baike span {
+	background-position: .2rem -3.125rem
+}
+
+.bottom_tab .active .icon_hot span {
+	background-position: .1rem -4.6875rem
+}
+
+.bottom_tab .active .icon_ask span {
+	background-position: 0 -6.25rem
+}
+
+.bottom_tab .active .icon_baike span {
+	background-position: .2rem -7.8125rem
+}
+
+.bottom_tab .active p {
+	color: #00ae66
+}
+
+.footer {
+	padding-bottom: 3.12rem
+}

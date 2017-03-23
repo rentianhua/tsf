@@ -1,0 +1,472 @@
+@charset "UTF-8";
+
+.jingjiren_head .good_info,.jingjiren_head .self_intro .more,.page_agent .page_list .good_info,.page_agent .shoucang {
+	text-align: center
+}
+
+.page_agent .icon_duanxin,.page_agent .icon_news,.page_agent .icon_phone {
+	display: inline-block;
+	width: 2rem;
+	height: 2rem;
+	margin: -.5rem;
+	vertical-align: middle;
+	-webkit-transform: scale(.5);
+	transform: scale(.5)
+}
+
+.page_agent .icon_news {
+	background:url('../images/msg.png')
+}
+
+.page_agent .icon_phone {
+	background:url('../images/tel.png')
+}
+
+.jingjiren_lists {
+	padding: 0 0 0 1.25rem
+}
+
+.jingjiren_lists .tab_bar {
+	border-bottom: 1px solid #e5e5e5;
+	margin-left: -1.25rem
+}
+
+.jingjiren_lists .tab_bar .tab_tit>.tit {
+	max-width: 70%
+}
+
+.jingjiren_lists .mod_cont {
+	padding: 0
+}
+
+.jingjiren_lists .pictext {
+	padding: 1.25rem 1.25rem 1.25rem 0;
+	border-bottom: 1px solid #e5e5e5
+}
+
+.jingjiren_lists .pictext:last-child {
+	border-bottom: 0
+}
+
+.jingjiren_lists .pictext .media_main {
+	border-radius: 50%;
+	overflow: hidden
+}
+
+.jingjiren_lists .pictext .mod_media,.jingjiren_lists .pictext .mod_media .media_main {
+	width: 3.625rem;
+	height: 3.625rem
+}
+
+.jingjiren_lists .pictext .item_list {
+	padding-left: .9375rem
+}
+
+.jingjiren_lists .item_main,.jingjiren_lists .item_other {
+	margin-bottom: .3rem
+}
+
+.jingjiren_lists .item_main .info {
+	font-weight: 800;
+	font-size: .75rem;
+	color: #ED1B24
+}
+
+.jingjiren_lists .item_other {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	color: #626262;
+	font-size: .75rem
+}
+
+.jingjiren_lists .tag_box {
+	line-height: 1rem;
+	font-size: 0
+}
+
+.jingjiren_lists .tag_box>.tag {
+	margin: 0 -.125rem -.625rem 0;
+	line-height: 1em;
+	vertical-align: top;
+	-webkit-transform: scale(.85);
+	transform: scale(.85)
+}
+
+.jingjiren_lists .tag_box>.tag:first-child {
+	margin-left: -.25rem
+}
+
+.jingjiren_lists .tag_box>.tag:nth-child(5n) {
+	margin: .25rem 0 0 -.25rem
+}
+
+.page_agent .tag {
+	border: 1px solid;
+	background-color: #fff
+}
+
+.page_agent .tag.owner_trust_mark {
+	color: #de6843
+}
+
+.page_agent .tag.good_saler_mark {
+	color: #f29a01
+}
+
+.page_agent .tag.top_guider_mark {
+	color: #328fca
+}
+
+.page_agent .tag.school_experts {
+	color: #6da719
+}
+
+.page_agent .tag.good_comment_mark,.page_agent .tag.law_expert {
+	color: #35aa7f
+}
+
+.red {
+	color: #e96744
+}
+
+.jingjiren_head {
+	margin: 0;
+	padding: 0;
+	background-color: #ED1B24;
+	color: #fff;
+	border: 0
+}
+
+.jingjiren_head .basic_info {
+	padding: .5rem 1.25rem 1rem
+}
+
+.jingjiren_head .basic_info .head_info {
+	width: 4.25rem;
+	height: 4.25rem;
+	border-radius: 50%;
+	overflow: hidden
+}
+
+.jingjiren_head .basic_info .head_info img {
+	width: 100%;
+	height: 100%
+}
+
+.jingjiren_head .detail_info {
+	margin-left: 1.25rem
+}
+
+.jingjiren_head .detail_info .item_main {
+	margin-top: .3rem;
+	margin-bottom: .2rem;
+	font-weight: 700;
+	line-height: 1.2em;
+	overflow: hidden;
+	font-size: 1rem
+}
+
+.jingjiren_head .detail_info .item_main .name {
+	font-size: 1.125rem
+}
+
+.jingjiren_head .detail_info .item_main .info {
+	font-size: .75rem;
+	margin-left: .5rem
+}
+
+.jingjiren_head .detail_info .item_other {
+	opacity: .6;
+	font-size: .75rem
+}
+
+.jingjiren_head .good_info .good_rate {
+	display: block;
+	font-size: 1.125rem;
+	font-weight: 700;
+	margin-top: 1.2rem
+}
+
+.jingjiren_head .good_info .good_rate span,.jingjiren_head .good_info .good_rate_title {
+	font-size: .75rem
+}
+
+.jingjiren_head .data_info {
+	background-color: rgba(0,0,0,.14);
+	height: 4.25rem;
+	line-height: 4.25rem
+}
+
+.jingjiren_head .data_info .tab_tit .tit {
+	display: block;
+	font-size: .6225rem;
+	line-height: 1rem;
+	font-weight: 400
+}
+
+.jingjiren_head .data_info .tab_tit .num {
+	font-size: 1.125rem;
+	font-weight: 700;
+	margin-bottom: .375rem;
+	margin-top: 1rem;
+	color: #fff
+}
+
+.jingjiren_head .self_intro {
+	margin-left: 0;
+	background-color: #fff;
+	padding: 1rem 1.25rem;
+	border-bottom: 1px solid #e5e5e5
+}
+
+.jingjiren_head .self_intro .text {
+	color: #000
+}
+
+.jingjiren_head .self_intro .more .icon_pull {
+	background-position: 0 -26.25rem
+}
+
+.jingjiren_head .self_intro .more.over .icon_pull {
+	-webkit-transform: rotate(180deg) scale(.36,.42);
+	transform: rotate(180deg) scale(.36,.42)
+}
+
+.jingjiren_head .tags {
+	margin-left: 0;
+	background-color: #fff;
+	padding: 1rem 0 1rem 1.25rem
+}
+
+.jingjiren_head .tags .tag {
+	margin-right: .0625rem;
+	font-size: .6375rem
+}
+
+.jingjiren_info .mod_tit,.jingjiren_info h3 {
+	font-size: .9375rem
+}
+
+.page_agent .house_lists .tag {
+	background-color: #f4f7f9;
+	border: 0
+}
+
+.page_agent .pictext.people_img .mod_media,.page_agent .pictext.people_img .mod_media .media_main {
+	width: 2.625rem;
+	height: 2.625rem;
+	border-radius: 50%;
+	overflow: hidden
+}
+
+.jingjiren_info .tab_bar_a {
+	margin: 0 -1.25rem
+}
+
+.jingjiren_info h3.mod_tit {
+	margin: 0 0 0 -1.25rem;
+	padding: 0 1.25rem
+}
+
+.jingjiren_info .mod_tit .arrow:before {
+	right: 0
+}
+
+.jingjiren_info .mod_tit span {
+	font-weight: 400;
+	color: #999;
+	font-size: .8125rem
+}
+
+.jingjiren_info .mod_cont .pictext {
+	padding: 1.25rem 1.25rem 1.25rem 0
+}
+
+.jingjiren_info .mod_cont .pictext:last-child {
+	border-bottom: 0
+}
+
+.jingjiren_info .item_list .item_main {
+	margin-bottom: .25rem
+}
+
+.jingjiren_info .item_list .item_main .name {
+	font-weight: 400;
+	font-size: 1rem;
+	margin-right: .3rem
+}
+
+.jingjiren_info .pictext .item_minor>* {
+	margin-right: 0
+}
+
+.jingjiren_info .item_list .item_main .info {
+	font-weight: 400;
+	font-size: .75rem;
+	color: #999
+}
+
+.jingjiren_info .tag_box {
+	line-height: 1em;
+	height: 1rem
+}
+
+.jingjiren_info .tag_box .tag {
+	margin-bottom: .5rem;
+	border: 0;
+	background-color: #f4f7f9
+}
+
+.icon_rate_do,.icon_rate_up {
+	display: inline-block;
+	width: .625rem;
+	height: .5625rem;
+	margin-right: .125rem
+}
+
+.icon_rate_up {
+	background: url(data:image/png;
+	base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAsJJREFUeNqMVD1oFEEUfjO3f/ezl+QwCUFRIYpCMEpCNESFqElnZSn2VoKVBAQLwSLBQmwUa0uxsBLSWCWQgEFjMBIsNBYxf3h7ub27vd0dv5ndO/fCJTjLB7Pv53tv3ps3bGNigg5ZN4Ap4BLAgEVgBnjfMOidnW1x0A4huwu8yJ8qMKPDUoK6U7tWXNsZx/Y+8LydEz+ArA941jXQzcwuixisJIxOkwrnelic5Yn/ITwGjAC3071ZS0uniETYgpTJKdOXM2FzBxj+PTl5NEnA4hpeBZ5yPXWR65x0W6f0kQycU8pI+EFkrEX/YT2kypZLnuNhH8j/BYjvoZ4LknAUPx/yJ/OmPF5zCUG+U6agXCXK5iNZ2aFU1iItnwU7a5pWd6tU+uG4somyKdP2cds0O43oWDGZt1Ukfvo8WYNjxMwokKhVqf55jry1T2R0dzRJrS7pa2dKP0vTknDM6tBxjrAZ0Ucw3j9IxvB4JIh1TDeUzAuR/fpKlGm8JEeJ6LJsSkVIB2TVQOBWSD9zoUWWhH52KCpFQiaioK4kfONuVqIsYgjPJybrlpAlwTI5EnW/RaY4wCUJH7hbtW/ljX+ksjKijAMEQVsIdw82omkvfcGxKrkk4bYcLXfHe1Xd9WAgiFsG+atLB2bof10ibprKtgIf+L4ExyiuzXZj9IqAJ1Q9QtJwb73leTUe+sBIy82vryySvzwXdVnEtQc1yIr7Z/mKbjIVleEzCnmqf5mn4PsK8UJP1OzdTbTQUTppI20NSw3b9XaPg9a4g+qKcElqY0p8EK0rma6niKVtStrF3a22m+W3NcdXUZNgHCZcU1D7ffpaSY3lu3YZzrjF4CZiDqVtDn9GoY+i7+FK/AnXZPBMJ+9P5xK6EnTF8GP8+rQ8Do2VAx7GL4l8eX7JzIHHsf4RcCuhew08QUP2GgR/BRgAl/h0uUq9tSYAAAAASUVORK5CYII=) center center no-repeat;background-size: 100%
+}
+
+.icon_rate_do {
+	background: url(data:image/png;
+	base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAjtJREFUeNqMVDuLU0EUnsnr5v0iKSSCTcAfIJplXfH1DyyX7bcSthJBsBAsdrEQG8XactnCytIy2QVrQewkRbgQbpJ78072+2ZnwiS5u3jg487MOee75zUjm82muEGeA6+BBiCBC+AE+GEMGo3GmkPsBrJD4HM6nZax2JXZbDZ7GgTBEyyPgE9hTpFryG4BH7PZrIzH40JKqcB1LpeTOso7/0N4G7gP7DuOk4xGo9sOkYiAzsHyALjXarVqtl7qGj4CPsD4ASNhiolEQjnrVK/qo1NfLBZiMpmo8+Vyyf05jl+inuck3MHmJ2rlMCUjNOz3+8L3fUVOIUkmk2HaqgRGeD4cDgM2kb88TqVSW2Su64pSqSTq9bqwmiLa7bbSVSqVFan+YRqkx8xp10RgZDAYiGKxKGq1mnKaz+cKXPOMOkZvi+Z4SMIhI7IFoyHK5bKKKAzU0cYWzRGQ8HQ8Hq8p6cSGXEdIHSO2RXOcsjivsNnF924ymVyNBg3CxoZCMjMBlNFoRPvf5OKpyxuEg6/sFgVNEt1ud1W7TVBHG9Nh+H7Bcgdj45qr51Fn/pjP50Wn01F1KRQKa9F5nid6vZ6oVqv28QJk3uZd3jMpMh06MBJ23IzUdDpd6YytHqlnYY/D2kNBB84aSQgK7raw59Xq7ijsLp8ZR1tIwGYRm2Qmasj3MMITFPcXO8a7au4s9xjiP8DfMB199OuzlaYPPIbBG+BAvzz/GDnwTs/aW+CFpfsGvEdDfENyKcAA+VdCyNc9NaQAAAAASUVORK5CYII=) center center no-repeat;background-size: 100%
+}
+
+.jingjiren_info .item_list .item_minor {
+	margin-bottom: .45rem
+}
+
+.jingjiren_info .item_list .item_minor:nth-of-type(3) {
+	font-size: .875rem;
+	margin-top: .25rem;
+	margin-bottom: .375rem
+}
+
+.jingjiren_info .item_list .item_minor:nth-of-type(4) {
+	color: #999
+}
+
+.jingjiren_info .item_list .item_minor .time {
+	float: right
+}
+
+.jingjiren_info .item_list .item_other {
+	margin-bottom: .35rem;
+	color: #acabab
+}
+
+.page_agent .fuwu .mod_cont {
+	padding: 0
+}
+
+.page_agent .fuwu .mod_cont .li_item {
+	padding: 1rem 1.25rem 1rem 0;
+	height: auto;
+	line-height: normal;
+	font-size: .875rem
+}
+
+.page_agent .fuwu .mod_cont .li_item .tit {
+	font-size: .9375rem;
+	color: #111;
+	font-weight: 800
+}
+
+.page_agent .fuwu .mod_cont .li_item .info {
+	color: #5baede
+}//.page_agent .house_lists .mod_tit .arrow:before {
+	right: 1.25rem
+}
+
+.page_agent .zixun {
+	-webkit-box-flex: 63;
+	-webkit-flex: 63;
+	-moz-box-flex: 63;
+	-ms-flex: 63;
+	flex: 63
+}
+
+.page_agent .shoucang {
+	-webkit-box-flex: 12;
+	-webkit-flex: 12;
+	-moz-box-flex: 12;
+	-ms-flex: 12;
+	flex: 12;
+	color: #00ae66;
+	height: 3.0625rem;
+	font-size: .6875rem;
+	background-color: #fff
+}
+
+.page_agent .shoucang img {
+	margin-top: .5rem;
+	width: 1.25rem
+}
+
+.page_agent .fixed_opt_app {
+	box-shadow: 0 -.0625rem .125rem rgba(0,0,0,.05)
+}
+
+.page_agent .page_list .tab_bar_a {
+	margin: 0 -1.25rem
+}
+
+.page_agent .page_list .good_info .good_rate,.page_agent .page_list.mod_box {
+	margin-top: 0
+}
+
+.page_agent .page_list .pictext {
+	position: relative;
+	border-bottom: 1px solid #e5e5e5
+}
+
+.page_agent .page_list .pictext:last-child {
+	border-bottom: 0
+}
+
+.page_agent .page_list .data_info {
+	height: 2.75rem;
+	line-height: 2.75rem;
+	background-color: #f7fdfa;
+	color: #333
+}
+
+.page_agent .page_list .tab_bar .tab_tit {
+	font-size: .75rem;
+	font-weight: 400
+}
+
+.contact_agent {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	padding: 0;
+	background: #fff;
+	color: #333;
+	-webkit-box-shadow: 0 0 1px #d9d9d9;
+	box-shadow: 0 0 1px #d9d9d9
+}
+
+.contact_agent>.box_col {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	color: #fff
+}
+
+.contact_agent .follow {
+	width: 4.75rem;
+	height: 2.5rem;
+	line-height: 2.5rem;
+	text-align: center
+}
+
+.contact_agent .follow>* {
+	vertical-align: middle
+}

@@ -1,0 +1,371 @@
+.detail .page_baike_detail {
+	overflow: hidden;
+	background: #fff
+}
+
+.detail .head_pic img {
+	width: 100%
+}
+
+.detail .summary {
+	color: #00ae66
+}
+
+.detail .summary_content {
+	line-height: 1.75rem
+}
+
+.detail .summary_wrap {
+	border-top: 1px solid #e5e5e5;
+	padding-top: 1rem;
+	margin-bottom: 1.125rem;
+	font-size: 1rem
+}
+
+.detail .page_baike_detail .pg_header {
+	background-color: #fff;
+	color: #333;
+	overflow: hidden;
+	padding-left: 1.125rem;
+	padding-right: 1.125rem
+}
+
+.detail .page_baike_detail .pg_header h1 {
+	font-size: 1.375rem;
+	line-height: 1.75rem;
+	margin-top: 1.625rem;
+	font-weight: 700
+}
+
+.detail .page_baike_detail .pg_header p {
+	color: rgba(57,64,67,.4);
+	font-size: .75rem;
+	line-height: 1rem;
+	margin-top: .75rem;
+	margin-bottom: 1.6875rem
+}
+
+.detail .page_baike_detail .pg_header .ib-box {
+	padding: .125rem .25rem;
+	vertical-align: bottom;
+	border-radius: .125rem;
+	margin-right: .375rem;
+	color: #00ae66;
+	background-color: #d9f3e8
+}
+
+.detail .page_baike_detail section {
+	padding-left: 1.125rem;
+	padding-right: 1.125rem;
+	font-size: 1rem
+}
+
+.detail .page_baike_detail section>p {
+	line-height: 1.35714286;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	font-size: 1rem
+}
+
+.detail .page_baike_detail .category {
+	margin-bottom: 1rem;
+	font-size: 0
+}
+
+.detail .page_baike_detail .category a {
+	margin: .3125rem .3125rem 0 0;
+	display: inline-block;
+	background: #f0f3f5;
+	color: #849aae;
+	padding: .375rem
+}
+
+.detail .page_baike_detail footer .icon {
+	display: block;
+	width: 1.5625rem;
+	height: 1.5625rem;
+	background-size: 100% auto;
+	background-position: 0 37%;
+	margin: .5rem auto 0
+}
+
+.detail .page_baike_detail footer p {
+	font-size: .75rem;
+	transform: scale(.833);
+	-webkit-transform: scale(.833);
+	text-align: center;
+	margin-top: .125rem
+}
+
+.detail .page_baike_detail footer.done {
+	color: #00ae66
+}
+
+.detail .page_baike_detail footer.done .icon {
+	background-position: 0 87%
+}
+
+.detail .ask_header {
+	padding: .875rem 1.125rem;
+	background: #e5f7ef
+}
+
+.detail .ask_header a {
+	color: #00ae66;
+	font-size: .8125rem;
+	display: block
+}
+
+.detail .ask_header .fr {
+	float: right;
+	display: inline-block;
+	border: 2px solid #00ae66;
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	margin-top: .2rem;
+	width: .6rem;
+	height: .6rem;
+	font-size: 0;
+	border-bottom: none;
+	border-left: none
+}
+
+.detail .baike_list li,.detail .hot_list li,.detail .list_title {
+	border-bottom: 1px solid #e5e5e5
+}
+
+.detail .baike_list li {
+	height: 3.125rem;
+	line-height: 3.125rem;
+	list-style-type: disc;
+	list-style-position: inside;
+	overflow: hidden
+}
+
+.detail .hot_list li {
+	padding: 1rem 0 .65rem;
+	line-height: 1.25rem;
+	overflow: hidden
+}
+
+.detail .hot_list li p {
+	line-height: 1.25rem;
+	font-size: 1rem
+}
+
+.detail .hot_list .hot_time {
+	color: #9c9fa1;
+	font-weight: 100;
+	font-size: .8125rem;
+	margin-top: .3125rem
+}
+
+.detail .baike_list,.detail .hot_list {
+	padding: 1rem 0 .5rem
+}
+
+.detail .list_title {
+	color: #394043;
+	font-weight: 700
+}
+
+.detail .baike_list li:last-child {
+	border-bottom: none
+}
+
+.detail .next_page {
+	position: relative;
+	color: #fff;
+	height: 5rem
+}
+
+.detail .next_page .mask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 1.125rem;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.5)
+}
+
+.detail .next_page .mask a {
+	color: #fff;
+	display: block;
+	height: 2.5rem
+}
+
+.detail .next_arrow_wrap,.detail .next_arrow_wrap b,.detail .next_btn {
+	display: inline-block;
+	vertical-align: middle
+}
+
+.detail .next_page .mask p {
+	font-size: 1.125rem;
+	line-height: 1.125rem;
+	margin-bottom: .4rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap
+}
+
+.detail .next_page .mask p~div {
+	line-height: 1.125rem;
+	font-size: .8125rem
+}
+
+.detail .next_page .mask .fr {
+	float: right;
+	margin-top: -.1rem;
+	color: #fff
+}
+
+.detail .next_arrow_wrap {
+	width: .3rem;
+	overflow: hidden;
+	margin-left: .3rem
+}
+
+.detail .next_arrow_wrap b {
+	width: .4rem;
+	height: .5rem;
+	background: #fff;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	margin-left: -.2rem
+}
+
+.toast-info {
+	position: fixed;
+	width: 100%;
+	text-align: center;
+	height: 6.25rem;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	margin-top: -3.125rem;
+	display: none;
+	z-index: 100000;
+	-webkit-animation: fedeIn .3s linear;
+	-moz-animation: fedeIn .3s linear;
+	-ms-animation: fedeIn .3s linear;
+	-o-animation: fedeIn .3s linear;
+	animation: fedeIn .3s linear
+}
+
+.toast-info .info-con {
+	min-width: 8.125rem;
+	display: inline-block;
+	height: 8.125rem;
+	background-color: rgba(0,0,0,.7);
+	border-radius: .625rem;
+	text-align: center;
+	padding: 0 .625rem
+}
+
+.toast-info .info-icon {
+	width: 3.75rem;
+	height: 3.75rem;
+	display: inline-block;
+	margin-top: 1.25rem;
+	position: relative
+}
+
+.toast-info p {
+	font-size: .875rem;
+	color: #FFF
+}
+
+.toast-info .success .info-icon:before {
+	content: "";
+	display: inline-block;
+	width: 2.8125rem;
+	height: 1.25rem;
+	border: solid #FFF;
+	border-width: 0 0 1px 1px;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg)
+}
+
+.toast-info .fail .info-icon:after,.toast-info .fail .info-icon:before {
+	content: "";
+	display: inline-block;
+	width: 2.8125rem;
+	height: .0625rem;
+	background-color: #FFF
+}
+
+.toast-info .fail {
+	position: relative
+}
+
+.toast-info .fail .info-icon:after,.toast-info .fail .info-icon:before {
+	position: absolute;
+	top: 1.25rem;
+	left: .625rem
+}
+
+.toast-info .fail .info-icon:before {
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg)
+}
+
+.toast-info .fail .info-icon:after {
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg)
+}
+
+.toast-info .loading-house {
+	margin-top: 1.875rem
+}
+
+@-webkit-keyframes fedeIn {
+	0% {
+		opacity: 0
+	}
+
+	100% {
+		opacity: 1
+	}
+}
+
+@-moz-keyframes fedeIn {
+	0% {
+		opacity: 0
+	}
+
+	100% {
+		opacity: 1
+	}
+}
+
+@-ms-keyframes fedeIn {
+	0% {
+		opacity: 0
+	}
+
+	100% {
+		opacity: 1
+	}
+}
+
+@keyframes fedeIn {
+	0% {
+		opacity: 0
+	}
+
+	100% {
+		opacity: 1
+	}
+}
