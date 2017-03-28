@@ -306,12 +306,16 @@ foreach($fields as $f){
                   <div class="col-1">
                     <div class="where">
                       <span class="zone"><span>
-                      <?php $l=strlen($vo['shiarea']);?>
-                      <if condition="$l gt 1">
-                      {$vo.shiarea|substr=###,0,1}-{$vo.shiarea|substr=###,-1,1}
-                      <else />
-                      {$vo.shiarea}
-                      </if>
+                      <?php 
+                      $l=count($vo['data']['shiarea']);
+                      if($l>1)
+                        { $s=strval($vo['data']['shiarea'][1]);
+                          $d=strval($vo['data']['shiarea'][$l-1]);
+                          echo $s,"-",$d;
+                      }
+                      else
+                        {echo $vo['data']['shiarea'][1];};
+                      ?>
                       室 / {$vo.mianjiarea}平米</span></span>
                     </div>
                     <div class="other">
@@ -367,12 +371,16 @@ foreach($fields as $f){
                   <div class="col-1">
                     <div class="where">
                       <span class="zone"><span>
-                      <?php $l=strlen($vo['data']['shiarea']);?>
-                      <if condition="$l gt 1">
-                      {$vo.data.shiarea|substr=###,0,1}-{$vo.data.shiarea|substr=###,-1,1}
-                      <else />
-                      {$vo.data.shiarea}
-                      </if>
+                      <?php 
+                      $l=count($vo['data']['shiarea']);
+                      if($l>1)
+                        { $s=strval($vo['data']['shiarea'][1]);
+                          $d=strval($vo['data']['shiarea'][$l-1]);
+                          echo $s,"-",$d;
+                      }
+                      else
+                        {echo $vo['data']['shiarea'][1];};
+                      ?>
                       室 / {$vo.data.mianjiarea}平米</span></span>
                     </div>
                     <div class="other">

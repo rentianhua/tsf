@@ -47,7 +47,7 @@ class UserController extends MemberbaseController {
 					$u['fromtable'] = "new";
 				}
 				$u['username'] = $this->userinfo['username'];
-				$arr = M('guanzhu') -> where($u) -> select();
+				$arr = M('guanzhu') -> where($u) ->order('updatetime DESC')-> select();
 
 				foreach($arr as $k=>$value){
 										

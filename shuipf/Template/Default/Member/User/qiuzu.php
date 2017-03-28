@@ -31,7 +31,7 @@ $userinfo=$this->userinfo = service("Passport")->getInfo();
 			}else{
 				$u['jjrid'] = $userinfo['userid'];
 			}
-			$list=M('userqiuzu')->where($u)->select();
+			$list=M('userqiuzu')->where($u)->order('updatetime DESC')->select();
 			?>
         	<volist name="list" id="vo">
             <tr>
@@ -41,7 +41,7 @@ $userinfo=$this->userinfo = service("Passport")->getInfo();
                   <th>{$vo.chenghu}</th>
                   <th>{$vo.username}</th>
                   </if>
-                      <td>{$vo.inputtime|date='Y-m-d H:m:s',###}</td>
+                      <td>{$vo.inputtime|date='Y-m-d H:i:s',###}</td>
                       <if condition="$userinfo['modelid'] eq 35">
                       <td>
                     <if condition="$vo['lock'] eq 0">               
