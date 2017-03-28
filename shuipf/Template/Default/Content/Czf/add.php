@@ -205,6 +205,14 @@
               <option value="其他">其他</option>
 			</select>
 	    </div>
+      <div>
+          <span class="w-head">小区类型：</span>
+        <select name="xiaoqutype" data-am-selected>
+        <option value="小区房" selected>小区房</option>
+        <option value="独栋">独栋</option>
+              <option value="--">--</option>
+      </select>
+      </div>
       <div class="am-form-group forfangwupeitao">
         <span class="w-head">房屋配套：</span>
         <input type="checkbox" value="空调"> 空调

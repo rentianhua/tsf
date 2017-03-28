@@ -31,7 +31,14 @@ class OrderController extends AdminBase {
                         break;
                     case 2:
                         $where['buytel'] = array("LIKE", '%' . $keyword . '%');
-                        break;                    
+                        break;
+                    case 3:
+                    	$r = M('new') -> where("title like '%" .$keyword ."%'") -> field('id') -> find();
+                        $where['house_id'] = $r['id'];
+                        break;
+                    case 4:
+                        $where['order_no'] = array("LIKE", '%' . $keyword . '%');
+                        break;                     
                     default:
                         $where['buyname'] = array("LIKE", '%' . $keyword . '%');
                         break;

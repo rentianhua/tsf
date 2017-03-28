@@ -15,15 +15,15 @@
         -
         <input type="text" class="input length_2 J_date" name="end_time" value="{$Think.get.end_time}" style="width:80px;">
         <select name="status">
-          <option value='0' >状态</option>
-          <option value='1' >锁定</option>
-          <option value='2' >正常</option>
+          <option value='0' <if condition="$_GET.status eq '0' "> selected</if>>状态</option>
+          <option value='1' <if condition="$_GET.status eq '1' "> selected</if>>锁定</option>
+          <option value='2' <if condition="$_GET.status eq '2' "> selected</if>>正常</option>
         </select>
         <?php echo Form::select($groupCache, (int)$_GET['groupid'], 'name="groupid"', '会员组') ?>
         <select name="type">
-          <option value='1' >用户名</option>
-          <option value='2' >经纪人ID</option>
-          <option value='4' >真实姓名</option>
+          <option value='1' <if condition="$_GET.type eq '1' "> selected</if>>用户名</option>
+          <option value='2' <if condition="$_GET.type eq '2' "> selected</if>>经纪人ID</option>
+          <option value='4' <if condition="$_GET.type eq '4' "> selected</if>>真实姓名</option>
         </select>
         <input name="keyword" type="text" value="{$Think.get.keyword}" class="input" />
         <button class="btn">搜索</button>

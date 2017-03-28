@@ -8,12 +8,15 @@
     <input type="hidden" value="Admin" name="g">
     <input type="hidden" value="Order" name="m">
     <input type="hidden" value="index" name="a">
+    <input type="hidden" value="0" name="steps">
     <input type="hidden" value="1" name="search">
     <div class="search_type cc mb10">
       <div class="mb10"> <span class="mr20">
-      	<select name="type">
-          <option value="1">购房人</option>
-          <option value="2">购房人手机号</option>
+      	<select class="select_2" name="type">
+          <option value="1" <if condition="$_GET.type eq '1' "> selected</if>>购房人</option>
+          <option value="2" <if condition="$_GET.type eq '2' "> selected</if>>购房人手机号</option>
+          <option value="3" <if condition="$_GET.type eq '3' "> selected</if>>楼盘名称</option>
+           <option value="4" <if condition="$_GET.type eq '4' "> selected</if>>订单号</option>
         </select>
         <input name="keyword" type="text" value="{$Think.get.keyword}" class="input" />
         <button class="btn">搜索</button>

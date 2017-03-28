@@ -139,13 +139,24 @@ class MapController extends Base {
 		if($_GET['zx']!=""){
 			$sql.= " and zhuangxiu = '".$_GET['zx']."'"; 
 			}
+		//Bug, fixed by Tianhua, on 2017.3.28
+		//when jjr_id is empyty in table tsf_ershou, it is belong to yz
+		// if($_GET['ly']!=""){
+		// 	print $_GET['ly'];
+		// 	if($_GET['ly']=='yz'){
+		// 		$sql.= " and jjr_id = ''";
+		// 	}elseif($_GET['ly']=='jjr'){
+		// 		$sql.= " and jjr_id != ''"; 
+		// 	}
+		// }
 		if($_GET['ly']!=""){
-			if($_GET['ly']=='yz'){
+			if($_GET['ly']=='业主'){
 				$sql.= " and jjr_id = ''";
-			}elseif($_GET['ly']=='jjr'){
+			}elseif($_GET['ly']=='经纪人'){
 				$sql.= " and jjr_id != ''"; 
 			}
 		}
+		//fix end
 		if($_GET['kw']!=""){
 			$sql.= " and title like '%".$_GET['kw']."%'"; 
 			}

@@ -91,7 +91,8 @@ class MemberController extends AdminBase {
                         $where['regip'] = array("EQ", $keyword);
                         break;
                     case 5:
-                        $where['nickname'] = array("LIKE", '%' . $keyword . '%');
+                        $info = M('member_normal')-> where("realname like '%" .$keyword ."%'") -> field('userid') -> find();
+                        $where['userid'] = array("EQ", $info['userid']);
                         break;
                     default:
                         $where['username'] = array("LIKE", '%' . $keyword . '%');

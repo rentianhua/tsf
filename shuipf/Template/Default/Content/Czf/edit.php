@@ -197,6 +197,14 @@
               <option value="其他" <if condition="$info['fukuan'] eq '其他'">selected</if>>其他</option>
 			</select>
 	    </div>
+      <div>
+          <span class="w-head">小区类型：</span>
+        <select name="xiaoqutype" data-am-selected>
+        <option value="小区房" <if condition="$info['xiaoqutype'] eq '小区房'">selected</if>>小区房</option>
+        <option value="独栋" <if condition="$info['xiaoqutype'] eq '独栋'">selected</if>>独栋</option>
+              <option value="--">--</option>
+      </select>
+      </div>
         <div class="am-form-group forfangwupeitao">
         
         <span class="w-head">房屋配套：</span>
