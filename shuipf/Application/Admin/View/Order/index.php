@@ -61,6 +61,14 @@
               <if condition="$vo.pay_status eq 0">
               <a class="J_ajax_del" href="{:U('Admin/Order/coupon_del', array('id'=>$vo['id']) )}">[删除]</a>
               </if>
+              <if condition="$vo.pay_status eq 1">
+                <if condition="$vo.isused eq 1">
+                  <a style="color:red">[已使用]</a>
+                </if>
+                <if condition="$vo.isused eq 0">
+                 <a class="J_ajax_add" href="{:U('Admin/Order/coupon_use', array('id'=>$vo['id']) )}">[未使用]</a>
+              </if>
+              </if>
               </td>
             </tr>
           </volist>

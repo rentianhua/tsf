@@ -213,7 +213,7 @@ em, i, b, strong {
             </li>
           </ol>
         </li>
-        <li class="li-btn"> <i></i><a href="/index.php?m=map&a=es">清除全部条件</a> </li>
+        <li class="li-btn"> <i></i><a href="http://www.taoshenfang.com/index.php?m=map&a=es">清除全部条件</a> </li>
       </ol>
     </div>
   </div>
@@ -309,6 +309,17 @@ em, i, b, strong {
 <script src="{:C('app_ui')}js/common.js"></script> 
 <div id="only" data-city="sz" data-page="dituzufang_index"></div>
 <script>
+  
+  // function clear(){
+  //   Filter('zj');
+  //   Filter('mj');
+  //   Filter('shi');
+  //   Filter('cx');
+  //   Filter('lc');
+  //   Filter('ly');
+  //   Filter('zx');
+  // }
+
 	function Filter(field,value){
     var $ = function(ele){return document.getElementById(ele);}
 	if(field == "ct"){

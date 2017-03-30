@@ -68,6 +68,19 @@ class OrderController extends AdminBase {
 			}
 		}
 	}
+
+	//使用优惠券
+	public function coupon_use(){
+		if(IS_GET)	{
+			$rs = M('coupon')->where('id='.$_GET['id'])->setField('isused',"1");
+			//print $rs;
+			if($rs){
+				$this -> success("使用成功");	
+			}else{
+				$this -> success("使用失败");	
+			}
+		}
+	}
 	
 	//勾地订单列表
 	public function goudi(){

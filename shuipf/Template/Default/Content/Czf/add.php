@@ -192,7 +192,7 @@
 	      <select name="zulin" data-am-selected>
 			  <option value="整租" selected>整租</option>
 			  <option value="合租">合租</option>
-              <option value="--">--</option>
+              <!-- <option value="--">--</option> -->
 			</select>
 	    </div>
         <div>
@@ -210,7 +210,7 @@
         <select name="xiaoqutype" data-am-selected>
         <option value="小区房" selected>小区房</option>
         <option value="独栋">独栋</option>
-              <option value="--">--</option>
+              <!-- <option value="--">--</option> -->
       </select>
       </div>
       <div class="am-form-group forfangwupeitao">

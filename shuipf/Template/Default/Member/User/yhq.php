@@ -33,7 +33,10 @@ $userinfo=$this->userinfo = service("Passport")->getInfo();
                   <?php $new=getnewName($vo['house_id']);?>
                   <td><a target="_blank" href="{$new.url}">{$new.title}</a></td>
                   <td><if condition="$vo['pay_status'] eq 0">未支付
-                  <a href="/index.php?g=Api&m=Api&a=yhq_pay&id={$vo.id}" style="background:#FF6B07;color:#fff;height:20px;line-height:6px;border-radius:3px;" type="button" class="am-btn am-btn-xs">去支付</a><else />已支付</if></td>                  <td>
+                  <a href="/index.php?g=Api&m=Api&a=yhq_pay&id={$vo.id}" style="background:#FF6B07;color:#fff;height:20px;line-height:6px;border-radius:3px;" type="button" class="am-btn am-btn-xs">去支付</a><else />已支付</if>
+                     <if condition="$vo['isused'] eq 0"><div style="color:green">未使用</div><else /><div style="color:red">已使用</div></if>
+                  </td>                  
+                  <td>
                   <if condition="$vo['pay_status'] eq 0">
                   <img onclick="javascript:$('#yhqid').val('{$vo.id}');" data-am-modal="{target: '#my-popup'}" src="{:C('app_ui')}images/delete.png" title="删除" style="width:20px;height:20px;">
                    </if>
@@ -65,10 +68,12 @@ $userinfo=$this->userinfo = service("Passport")->getInfo();
       <h4 class="am-popup-title">删除优惠券</h4>
       <span class="am-close" data-am-modal-close="">×</span> </div>
     <div style="margin-left:15%" class="am-popup-bd">
-      <div> <span style="display: inline-block;width: 100px;margin-bottom: 15px">验证码：</span>
-        <input type="text" style="border: 1px solid #e4e3e3;font-size: 16px;height: 36px;padding: 0 10px;width: 200px;" id="yzm">
-        <span id="myzm"></span>
-        <button class="am-btn yzm" type="button" onclick="sendyzm();">发送验证码</button>
+      <div> <span style="display: inline-block;width: 100px;margin-bottom: 15px">手机号：<span id="mgtel"></span></span> 
+        <input type="text" placeholder="手机号" id="gtel" style="border: 1px solid #e4e3e3;font-size: 16px;height: 36px;padding: 0 10px;width: 200px;" value="<?php echo $userinfo['username'];?>" readonly>
+         </div>
+      <div> <span style="display: inline-block;width: 100px;margin-bottom: 15px">验证码：<span id="mgyzm"></span></span>
+        <input type="text" id="gyzm" style="border: 1px solid #e4e3e3;font-size: 16px;height: 36px;padding: 0 10px;width: 200px;">        
+        <button id="sendcode" onclick="sendyzm();" type="button" class="am-btn yzm">发送验证码</button>
       </div>
     </div>
     <div>
@@ -79,49 +84,143 @@ $userinfo=$this->userinfo = service("Passport")->getInfo();
 </div>
 <script type="text/javascript">
 profile.init();
-function yhq_del(id){
-	var yzm = $.trim($("#yzm").val());
-	var pat = /(^\d{6}$)/;
-	if(yzm == ""){
-		$("#myzm").html("<span class='icon'>请输入验证码</span>");
-	}else if(!pat.exec(yzm)){
-		$("#myzm").html("<span class='icon'>入验证码错误</span>");	
-	}else{
-	
-		$.ajax({
 
+function clear(){
+  $("#my-popup .icon").remove();
+}
+
+var $tel = $("#gtel");
+var $mtel = $("#mgtel");
+var $sendcode = $("#sendcode");
+var $yzm = $("#gyzm");
+var $myzm = $("#mgyzm");
+var pat = /(^1[3|4|5|7|8][0-9]{9}$)/;
+var pat1 = /(^\d{6}$)/;
+//验证码倒计时
+var countdown=60;
+$sendcode.removeAttr("disabled");
+
+function settime() {      
+  if (countdown == 0) { 
+    $sendcode.removeAttr("disabled");    
+    $sendcode.html("发送验证码"); 
+    countdown = 60; 
+    return;
+  } else { 
+    $sendcode.attr("disabled", true); 
+    $sendcode.html("已发送(" + countdown + ")"); 
+    countdown--; 
+  }     
+  setTimeout(function(){settime();},1000);       
+}
+
+//发送验证码
+function sendyzm(){
+  var err = false;
+  if(err){
+    setTimeout(function(){
+      clear();  
+    },2000);
+  }else{
+    //发送验证码
+    $.ajax({
       type: "POST",
-
       global: false, // 禁用全局Ajax事件.
-
-      url: "/index.php?g=api&m=house&a=coupon_del",
-
+      url: "/index.php?g=api&m=sms&a=getyzm_hd",
       data: {
-
-        id: $("#yhqid").val(),
-
-        userid: {$userinfo.userid},
-		username: {$userinfo.username},
-		yzm: $.trim($("#yzm").val())
-
+        mob: '<?php echo $userinfo['username'];?>'
       },
-
       dataType: "json",
-
       success: function (data) {
-
-        if(data.success){
-
-          alert(data.info);
-		  window.location.href="/index.php?g=Member&m=User&a=yhq";
-
+        if(data.success == 11){
+          //倒计时
+          $sendcode.attr("disabled", true);
+          settime();
         }
-
-      }
-
+      }       
     });
-	}
-};
+  }
+}
+
+function yhq_del(){
+  var yzm = $.trim($("#yzm").val());
+  var pat = /(^\d{6}$)/;
+  var err = false; 
+  if($.trim($yzm.val()) == ""){
+    $myzm.html("<span class='icon'>×</span>");
+    err = true; 
+  }else if(!pat1.exec($.trim($yzm.val()))){
+    $myzm.html("<span class='icon'>×</span>");
+    err = true; 
+  }
+  console.log(err);
+  if(err){
+    setTimeout(function(){
+    clear();
+    },2000);    
+  }else{
+    console.log($("#yhqid").val());
+    <?php if($userinfo){?>
+    $.ajax({
+      type: "POST",
+      global: false, // 禁用全局Ajax事件.
+      url: "/index.php?g=api&m=house&a=coupon_del",
+      data: {
+        "id": $("#yhqid").val(),
+        "userid": <?php echo $userinfo['userid'];?>,
+        "yzm": $("#gyzm").val()
+      },
+      dataType: "json",
+      success: function (data) {
+        if(data.success == 76){
+          alert(data.info);
+          window.location.href="/index.php?g=Member&m=User&a=yhq";     
+        }else{
+          alert(data.info);
+        }
+      }
+    });
+    <?php }?>
+  }
+}
+// function yhq_del(){
+//   console.log("yzm");
+// 	var yzm = $.trim($("#yzm").val());
+//   console.log(yzm);
+
+
+// 	var pat = /(^\d{6}$)/;
+// 	if(yzm == ""){
+// 		//$("#myzm").html("<span class='icon'>请输入验证码</span>");
+// 	}else if(!pat.exec(yzm)){
+// 		//$("#myzm").html("<span class='icon'>入验证码错误</span>");	
+// 	}else{
+// 	  alert(11111);
+  //   <?php if($userinfo){?>
+		// $.ajax({
+  //     type: "POST",
+  //     global: false, // 禁用全局Ajax事件.
+  //     url: "/index.php?g=api&m=house&a=coupon_del",
+  //     data: {
+  //       "id": $("#yhqid").val(),
+  //       "userid": {$userinfo.userid},
+		//     "username": {$userinfo.username},
+		//     "yzm": $.trim($("#yzm").val())
+  //     },
+  //     dataType: "json",
+  //     success: function (data) {
+  //       if(data.success == 67){
+  //         alert(data.info);
+  //         window.location.href="/index.php?g=Member&m=User&a=yhq";     
+  //       }else{
+  //         alert(data.info);
+  //       }
+  //     }
+  //   });
+  //   <?php }?>
+// 	}
+// };
+
 function showhide(id){
 	var ele= $("#hide_"+id);
 	var show = ele.is(":visible");

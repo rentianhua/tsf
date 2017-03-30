@@ -31,7 +31,7 @@ $userinfo=$this->userinfo = service("Passport")->getInfo();
 			}else{
 				$u['jjrid'] = $userinfo['userid'];
 			}
-			$list=M('userqiuzu')->where($u)->order('updatetime DESC')->select();
+			$list=M('userqiuzu')->where($u)->order('inputtime DESC')->select();
 			?>
         	<volist name="list" id="vo">
             <tr>

@@ -90,13 +90,14 @@ em, i, b, strong {
 				?></span> <i class="drop-i"></i>
           <ol class="drop-list" style="display: none;">
             <li class="item" onclick="Filter('zj')">不限</li>
-            <li class="item" onclick="Filter('zj','0-1000')">1000元以下</li>
-            <li class="item" onclick="Filter('zj','1000-1500')">1000-1500元</li>
-            <li class="item" onclick="Filter('zj','1500-2000')">1500-2000元</li>
+            <li class="item" onclick="Filter('zj','0-1000')">500元以下</li>
+            <li class="item" onclick="Filter('zj','500-1000')">500-1000元</li>
+            <li class="item" onclick="Filter('zj','1000-2000')">1000-2000元</li>
             <li class="item" onclick="Filter('zj','2000-3000')">2000-3000元</li>
-            <li class="item" onclick="Filter('zj','3000-4000')">3000-4000元</li>
-            <li class="item" onclick="Filter('zj','4000-5000')">4000-5000元</li>
-            <li class="item" onclick="Filter('zj','5000-')">5000元以上</li>
+            <li class="item" onclick="Filter('zj','3000-5000')">3000-5000元</li>
+            <li class="item" onclick="Filter('zj','5000-8000元')">5000-8000元</li>
+            <li class="item" onclick="Filter('zj','8000-10000')">8000-10000元</li>
+            <li class="item" onclick="Filter('zj','10000-')">10000元以上</li>
           </ol>
         </li>
         <li class="li li-filter" data-type="roomArea"> 
@@ -115,13 +116,14 @@ em, i, b, strong {
 				?></span> <i class="drop-i"></i>
           <ol class="drop-list" style="display: none;">
             <li class="item" onclick="Filter('mj')">不限</li>
-            <li class="item" onclick="Filter('mj','0-30')">30平以下</li>
+            <li class="item" onclick="Filter('mj','0-50')">50平以下</li>
             <li class="item" onclick="Filter('mj','30-50')">30-50平</li>
             <li class="item" onclick="Filter('mj','50-70')">50-70平</li>
             <li class="item" onclick="Filter('mj','70-90')">70-90平</li>
-            <li class="item" onclick="Filter('mj','90-120')">90-120平</li>
-            <li class="item" onclick="Filter('mj','120-150')">120-150平</li>
-            <li class="item" onclick="Filter('mj','150-200')">150-200平</li>
+            <li class="item" onclick="Filter('mj','90-110')">90-110平</li>
+            <li class="item" onclick="Filter('mj','110-140')">110-140平</li>
+            <li class="item" onclick="Filter('mj','140-170')">140-170平</li>
+            <li class="item" onclick="Filter('mj','170-200')">170-200平</li>
             <li class="item" onclick="Filter('mj','200-')">200平以上</li>
           </ol>
         </li>
@@ -214,7 +216,7 @@ em, i, b, strong {
             </li>
           </ol>
         </li>
-        <li class="li-btn" onClick="clear()"> <i></i>清除全部条件 </li>
+        <li class="li-btn"> <i></i><a href="http://www.taoshenfang.com/index.php?m=map">清除全部条件</a> </li>
       </ol>
     </div>
   </div>
@@ -311,6 +313,18 @@ em, i, b, strong {
 <script src="{:C('app_ui')}js/common.js"></script> 
 <div id="only" data-city="sz" data-page="dituzufang_index"></div>
 <script>
+  // function clear(){
+  //   console.log("1111");
+  //   Filter('zj');
+  //   Filter('mj');
+  //   Filter('shi');
+  //   Filter('cx');
+  //   Filter('lc');
+  //   Filter('zl');
+  //   Filter('ly');
+  //   Filter('bq');
+  // }
+
 	function Filter(field,value){
     var $ = function(ele){return document.getElementById(ele);}
 	if(field == "ct"){

@@ -92,7 +92,6 @@
               <td align="left">
               <a href="{:U('Member/jjrcenter', array('userid'=>$vo['userid'], 'username'=>$vo['username']) )}">[查看所有信息]</a>
               <a href="{:U('Member/edit', array('userid'=>$vo['userid']) )}">[修改]</a>
-              <a href="{:U('Member/edit', array('userid'=>$vo['userid']) )}">[修改]</a>
               <a href="javascript:if(confirm('确实要删除吗?'))location='{:U('Member/delete', array('userid'=>$vo['userid']) )}'">[删除]</a>
               </td>
             </tr>

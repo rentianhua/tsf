@@ -61,13 +61,19 @@ class CommentsController extends AdminBase {
                 //信息id
                 $id = $aid[2];
                 //取得对应文章信息
+                //fixed by tianhua on 2017.3.29
                 $title = M('member_agent')->where(array("userid" => $id))->find();
-				$user=M('member')->where('userid='.$v['user_id'])-> field('username')->find();
+                $user=M('member')->where('username='.$v['author']) ->find();
+                //$title = M('member_agent')->where(array("userid" => $id))->find();
+				//$user=M('member')->where('userid='.$v['user_id'])-> field('username')->find();
                 //替换表情
                 if ($r['content']) {
                     $this->db->replaceExpression($r['content']);
                 }
-                $data[$k] = array_merge($title,$user, $data[$k], $r);
+                $data[$k] = array_merge($data[$k],$user,$r);
+                if($title)
+                   $data[$k] = array_merge($data[$k],$title);
+                //end fix
             }
             $this->assign("Page", $page->show());
             $this->assign("data", $data);

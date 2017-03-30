@@ -1,16 +1,3 @@
-<?php
-//获取当前用户
-$userinfo=$this->userinfo = service("Passport")->getInfo();
-if($userinfo['modelid'] == 36){
-	$sql = "fromuser=".$userinfo['username'];
-}else{
-	if($_GET['t'] == 1){
-		$sql = "username = ".$userinfo['username'];
-	}else{
-		$sql = "fromuser = ".$userinfo['username'];
-	}
-}
-?>
 <template file="Member/Public/head_user.php"/>
 <template file="Content/nav.php"/>
 <link href="{:C('app_ui')}css/main.css" rel="stylesheet">
@@ -39,8 +26,8 @@ if($userinfo['modelid'] == 36){
             </tr>
         </thead>
         <tbody>
-            <content action="lists" catid="50" where="$sql" order="inputtime DESC" num="8" page="$page">
-        <volist name="data" id="vo">
+           <!--  <content action="lists" catid="50" where="$sql" order="inputtime DESC" num="8" page="$page"> -->
+        <volist name="arr" id="vo">
         <tr>
                   <td>{$i}</td>
                   <?php $bt = getBT($vo['fromid'],$vo['fromtable']);?>
@@ -80,8 +67,8 @@ if($userinfo['modelid'] == 36){
             </tr>
         </thead>
         <tbody>
-            <content action="lists" catid="50" where="$sql" order="inputtime DESC" num="8" page="$page">
-        <volist name="data" id="vo">
+            <!-- <content action="lists" catid="50" where="$sql" order="inputtime DESC" num="8" page="$page"> -->
+        <volist name="arr" id="vo">
         <tr>
                   <td>{$i}</td>
                   <?php $bt = getBT($vo['fromid'],$vo['fromtable']);?>
@@ -124,8 +111,8 @@ if($userinfo['modelid'] == 36){
             </tr>
         </thead>
         <tbody>
-            <content action="lists" catid="50" where="$sql" order="inputtime DESC" num="8" page="$page">
-        <volist name="data" id="vo">
+            <!-- <content action="lists" catid="50" where="$sql" order="inputtime DESC" num="8" page="$page"> -->
+        <volist name="arr" id="vo">
         <tr>
                   <td>{$i}</td>
                   <?php $bt = getBT($vo['fromid'],$vo['fromtable']);?>

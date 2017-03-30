@@ -184,7 +184,7 @@
 	      <select name="zulin" data-am-selected>
 			  <option value="整租" <if condition="$info['zulin'] eq '整租'">selected</if>>整租</option>
 			  <option value="合租" <if condition="$info['zulin'] eq '合租'">selected</if>>合租</option>
-              <option value="--" <if condition="$info['zulin'] eq '--'">selected</if>>--</option>
+              <!-- <option value="--" <if condition="$info['zulin'] eq '--'">selected</if>>--</option> -->
 			</select>
 	    </div>
         <div>
@@ -202,7 +202,7 @@
         <select name="xiaoqutype" data-am-selected>
         <option value="小区房" <if condition="$info['xiaoqutype'] eq '小区房'">selected</if>>小区房</option>
         <option value="独栋" <if condition="$info['xiaoqutype'] eq '独栋'">selected</if>>独栋</option>
-              <option value="--">--</option>
+              <!-- <option value="--">--</option> -->
       </select>
       </div>
         <div class="am-form-group forfangwupeitao">

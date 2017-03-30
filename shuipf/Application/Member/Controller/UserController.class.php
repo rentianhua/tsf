@@ -47,12 +47,23 @@ class UserController extends MemberbaseController {
 					$u['fromtable'] = "new";
 				}
 				$u['username'] = $this->userinfo['username'];
-				$arr = M('guanzhu') -> where($u) ->order('updatetime DESC')-> select();
+				
+        //fix by tianhua on 2017.3.29 for deleted ershou fang disply empty issue
+        $arr2 = M('guanzhu') -> where($u) ->order('updatetime DESC')-> select();
+        $arr = Array();
 
+        foreach($arr2 as $k=>$value){
+          $data = M($value['fromtable']) -> where('id='.$value['fromid']) -> find();
+          if($data['status']!="1"){
+            array_push($arr, $value);
+          }
+        }
+        //end fix
 				foreach($arr as $k=>$value){
-										
-					$arr[$k]['house'] = M($value['fromtable']) -> where('id='.$value['fromid']) -> find();											
-					$arr[$k]['house']['xiaoquname'] = M('xiaoqu')->where('id='.$arr[$k]['house']['xiaoqu'])->getfield('title');			
+					if($value['fromid'])	
+					   $arr[$k]['house'] = M($value['fromtable']) -> where('id='.$value['fromid']) -> find();
+          if($arr[$k]['house']['xiaoqu'])											
+					   $arr[$k]['house']['xiaoquname'] = M('xiaoqu')->where('id='.$arr[$k]['house']['xiaoqu'])->getfield('title');			
 				}				
 				$count = count($arr);
 				$this->assign("arr", $arr);
@@ -166,7 +177,41 @@ class UserController extends MemberbaseController {
 
   //我的预约
   public function yuyue(){
-    $this->display();
+    //$this->display();
+    if(IS_GET){
+      $userinfo = $this -> userinfo = service("Passport") -> getInfo();
+
+      if($_GET[t]){
+        $t = $_GET['t'];
+        if($userinfo['modelid'] == 36){
+          $sql = "fromuser=".$userinfo['username'];
+        }
+        else{
+          if($_GET['t'] == 1){
+            $sql = "username = ".$userinfo['username'];
+          }else{
+            $sql = "fromuser = ".$userinfo['username'];
+          }
+        }
+
+        print $sql;
+        $arr2 = M('yuyue') -> where($sql) ->select();
+        $arr = Array();
+
+        foreach($arr2 as $k=>$value){
+          $data = M("ershou") -> where('id='.$value['fromid']) -> find();
+          if($data['status']!="1"){
+            array_push($arr, $value);
+          }
+        }
+        $this->assign("arr", $arr);
+        $this->display();
+      }else{
+        $this->error("非法操作");
+      }
+    }else{
+      $this->error("非法操作");
+    }
   }
   //求租
   public function qiuzu(){
