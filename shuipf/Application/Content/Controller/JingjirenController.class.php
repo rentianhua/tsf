@@ -63,6 +63,7 @@ class JingjirenController extends Base {
 		 }	
 		 $x['comment_id'] = 'c-88-'.$v['userid'];	
 		 $data[$k]['comm_count'] = M('comments')->where($x)->count();
+		 $data[$k]['comm_count'] = M('comments')->where($x)->count();
 	}
 	$SEO['title']=cache('Config.sitename');
 	$SEO['description']=cache('Config.siteinfo');

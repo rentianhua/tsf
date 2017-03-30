@@ -333,7 +333,18 @@ public function jjrshow()
 			}else{
 				$u['username'] = $_POST['username'];
 			}
-			$rs = M('yuyue')->where($u)->order('inputtime DESC')->select();	
+			//$rs = M('yuyue')->where($u)->order('inputtime DESC')->select();	
+
+			$arr2 = M('yuyue') -> where($sql)->order('inputtime DESC') ->select();
+        	$rs = Array();
+
+	        foreach($arr2 as $k=>$value){
+	          $data = M("ershou") -> where('id='.$value['fromid']) -> find();
+	          if(count($data) >0 &&$data['status']!="1"){
+	            array_push($rs, $value);
+	          }
+	        }
+
 			foreach($rs as $k=>$v){
 				$rs[$k]['house'] = M($v['fromtable'])->where('id='.$v['fromid'])->field('title,id')->find();	
 			}
@@ -422,7 +433,20 @@ public function jjrshow()
 			 }
 			 $u['username'] = $_POST['username'];
 			 $u['fromtable'] = $_POST['table'];
-			$rs = M('guanzhu')->where($u)->select();
+			//$rs = M('guanzhu')->where($u)->select();
+
+			//fix by tianhua on 2017.3.29 for deleted ershou fang disply empty issue
+	        $arr2 = M('guanzhu') -> where($u) ->order('updatetime DESC')-> select();
+	        $rs = Array();
+
+	        foreach($arr2 as $k=>$value){
+	          $data = M($value['fromtable']) -> where('id='.$value['fromid']) -> find();
+	          if(count($data) >0 && $data['status']!="1"){
+	            array_push($rs, $value);
+	          }
+	        }
+	        //end fix
+	        
 			foreach($rs as $k=>$v){
 				$rs[$k]['house'] = M($v['fromtable'])->where('id='.$v['fromid'])->find();
 				$rs[$k]['house']['xiaoquname'] = M('xiaoqu')->where('area='.$rs[$k]['house']['area'].' and id='.$rs[$k]['house']['xiaoqu'])->getfield('title');
@@ -531,7 +555,7 @@ public function jjrshow()
 				exit;
 			}
 			
-			$rs = M($_POST['table'])->where($k)->order('inputtime DESC')->select();
+			$rs = M($_POST['table'])->where($k)->order('updatetime DESC')->select();
 			foreach($rs as $a=>$v){
 				$rs[$a]['province_name'] = M('area')->where('id='.$v['province'])->getField('name');
 			$rs[$a]['city_name'] = M('area')->where('id='.$v['city'])->getField('name');
@@ -636,7 +660,7 @@ public function jjrshow()
 				exit;
 			}
 			$k['username'] = $_POST['username'];
-			$rs = M('userqiugou')->where($k)->select();
+			$rs = M('userqiugou')->where($k)->order('updatetime DESC')->select();
 			if($rs){
 				echo json_encode($rs);
 				exit;

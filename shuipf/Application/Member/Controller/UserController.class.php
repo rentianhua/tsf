@@ -54,7 +54,7 @@ class UserController extends MemberbaseController {
 
         foreach($arr2 as $k=>$value){
           $data = M($value['fromtable']) -> where('id='.$value['fromid']) -> find();
-          if($data['status']!="1"){
+          if(count($data) >0 && $data['status']!="1"){
             array_push($arr, $value);
           }
         }
@@ -193,14 +193,12 @@ class UserController extends MemberbaseController {
             $sql = "fromuser = ".$userinfo['username'];
           }
         }
-
-        print $sql;
-        $arr2 = M('yuyue') -> where($sql) ->select();
+        $arr2 = M('yuyue') -> where($sql) -> order('inputtime DESC')->select();
         $arr = Array();
 
         foreach($arr2 as $k=>$value){
           $data = M("ershou") -> where('id='.$value['fromid']) -> find();
-          if($data['status']!="1"){
+          if(count($data) >0 &&$data['status']!="1"){
             array_push($arr, $value);
           }
         }
