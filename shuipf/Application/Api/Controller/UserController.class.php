@@ -313,9 +313,28 @@ public function jjrshow()
 				}	 
 			 
 		 }
-		$info['chengjiao_count']=0;
-		$info['weituo_count']=0;
-		$info['daikan_count']=0;	
+
+		//fix by tianhua on 2017.03.31
+		 $chenjiao_chuzu_count = M('chuzu')-> where("(username='".$info['base']['username']."' OR jjr_id='".$_GET['id']."') and zaizu=0")->count();
+		 $chenjiao_ershou_count = M('ershou')-> where("(username='".$info['base']['username']."' OR jjr_id='".$_GET['id']."') and zaishou=0")->count();
+
+		 $weituo_chuzu_count = M('chuzu')-> where("jjr_id='".$_GET['id']."' and pub_type!=1")->count();
+		 $weituo_ershou_count = M('ershou')-> where("jjr_id='".$_GET['id']."' and pub_type!=1")->count();
+
+		 $arr2 = M('yuyue') -> where("fromuser ='".$info['base']['username']."' and DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= FROM_UNIXTIME(inputtime)")
+		 		 -> select();
+	     $arr = Array();
+	     foreach($arr2 as $x=>$value){
+	        $ershoudata = M("ershou") -> where('id='.$value['fromid']) -> find();
+	        if(count($ershoudata) >0){
+	          array_push($arr, $value);
+	        }
+	     }
+		 
+		$info['chengjiao_count']=$chenjiao_chuzu_count + $chenjiao_ershou_count;
+		$info['weituo_count']=$weituo_chuzu_count + $weituo_ershou_count;
+		$info['daikan_count']=count($arr);
+		//end fix
         echo json_encode($info);
     }
 
@@ -328,28 +347,57 @@ public function jjrshow()
 			  echo '{"success":98,"info":"非法操作"}';
 				exit;
 			 }
-		  if($_POST['t'] == 1){
-			  $u['fromuser'] = $_POST['username'];
-			}else{
-				$u['username'] = $_POST['username'];
-			}
-			//$rs = M('yuyue')->where($u)->order('inputtime DESC')->select();	
+		 //update by tianhua on 2017.03.31
+		 //  if($_POST['t'] == 1){
+			//   $u['fromuser'] = $_POST['username'];
+			// }else{
+			// 	$u['username'] = $_POST['username'];
+			// }
+			// //$rs = M('yuyue')->where($u)->order('inputtime DESC')->select();	
 
-			$arr2 = M('yuyue') -> where($sql)->order('inputtime DESC') ->select();
-        	$rs = Array();
+			// $arr2 = M('yuyue') -> where($sql)->order('inputtime DESC') ->select();
+   //      	$rs = Array();
 
-	        foreach($arr2 as $k=>$value){
-	          $data = M("ershou") -> where('id='.$value['fromid']) -> find();
-	          if(count($data) >0){
-	            array_push($rs, $value);
-	          }
-	        }
+	  //       foreach($arr2 as $k=>$value){
+	  //         $data = M("ershou") -> where('id='.$value['fromid']) -> find();
+	  //         if(count($data) >0){
+	  //           array_push($rs, $value);
+	  //         }
+	  //       }
 
-			foreach($rs as $k=>$v){
-				$rs[$k]['house'] = M($v['fromtable'])->where('id='.$v['fromid'])->field('title,id')->find();	
-			}
-			if($rs){				
-				echo json_encode($rs);
+			// foreach($rs as $k=>$v){
+			// 	$rs[$k]['house'] = M($v['fromtable'])->where('id='.$v['fromid'])->field('title,id')->find();	
+			// }
+			 $userinfo = M('member') -> where('username='.$_POST['username']) -> select();
+			 if($userinfo['modelid'] == 36){
+		        $sql = "fromuser=".$_POST['username'];
+		      }
+		      else{
+		        if($_POST[t]){
+		        //手机端的和客户端反了
+		          if($_POST['t'] == 1){
+		            $sql = "fromuser= ".$_POST['username'];
+		          }else{
+		            $sql = "username= ".$_POST['username'];
+		          }
+		        }
+		      }
+		      $arr2 = M('yuyue') -> where($sql) -> order('inputtime DESC')->select();
+		      $arr = Array();
+
+		      foreach($arr2 as $k=>$value){
+		        $data = M("ershou") -> where('id='.$value['fromid']) -> find();
+		        if(count($data) >0){
+		          array_push($arr, $value);
+		        }
+		      }
+
+		      foreach($arr as $k=>$v){
+				$arr[$k]['house'] = M($v['fromtable'])->where('id='.$v['fromid'])->field('title,id')->find();	
+			  }
+			//end fix
+			if($arr){				
+				echo json_encode($arr);
 				exit;
 			}else{
 				echo '{"success":99,"info":"没有预约"}';

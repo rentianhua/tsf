@@ -387,9 +387,14 @@ foreach($fields as $f){
 		if($_GET['zl']!=""){
 			$sql.= " and zulin = '".$_GET['zl']."'"; 
 			}
-		if($_GET['zx']!=""){
-			$sql.= " and zhuangxiu = '".$_GET['zx']."'"; 
-			}
+    //update by tianhua on 2017.03.19
+		// if($_GET['zx']!=""){
+		// 	$sql.= " and zhuangxiu = '".$_GET['zx']."'"; 
+		// 	}
+    if($_GET['zx']!=""){
+      $sql.= " and biaoqian like '%".$_GET['zx']."%'"; 
+    }  
+    //end fix  
 		if($_GET['kf']!=""){
 			$sql.= " and biaoqian like '%".$_GET['kf']."%'"; 
 			}

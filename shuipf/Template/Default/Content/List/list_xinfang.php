@@ -302,6 +302,7 @@ foreach($fields as $f){
                   <?php $y=hasyhq($vo['id']);?>
                   <if condition="$y">
                   <span style="background: rgb(237, 27, 36) none repeat scroll 0% 0%; width: 43px; height: 19px;">优惠</span></if>
+                  <if condition="$vo.zaishou eq 0"><span style="background: rgb(237, 27, 36) none repeat scroll 0% 0%; width: 43px; height: 19px;">售罄</span></if>
                   </h2>
                   <div class="col-1">
                     <div class="where">
