@@ -79,8 +79,8 @@ h2 {
             <if condition="$info['agent']['worktime'] eq 6"> 5年以上
               <else />
               {$info.agent.worktime}年 </if>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>个人成绩:&nbsp;&nbsp;</span> <a target="_blank" href="?w=ershoufang">历史成交0套</a>， <a target="_blank" href="?w=dujia">独家委托0套</a>，
-            最近30天带看0次 </p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span>个人成绩:&nbsp;&nbsp;</span> <a target="_blank" href="?w=ershoufang">历史成交{$info.chenjiao_count}套</a>， <a target="_blank" href="?w=dujia">独家委托{$info.weituo_count}套</a>，
+            最近30天带看{$info.kanfang_count}次 </p>
           <p> <span>主营版块:&nbsp;&nbsp;</span>{$info.agent.mainarea}</p>
           <if condition="$info['agent']['coname'] neq ''">
           <p> <span>所属公司:&nbsp;&nbsp;</span>

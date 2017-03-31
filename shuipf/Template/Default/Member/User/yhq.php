@@ -153,13 +153,12 @@ function yhq_del(){
     $myzm.html("<span class='icon'>×</span>");
     err = true; 
   }
-  console.log(err);
+  
   if(err){
     setTimeout(function(){
     clear();
     },2000);    
   }else{
-    console.log($("#yhqid").val());
     <?php if($userinfo){?>
     $.ajax({
       type: "POST",
@@ -168,7 +167,8 @@ function yhq_del(){
       data: {
         "id": $("#yhqid").val(),
         "userid": <?php echo $userinfo['userid'];?>,
-        "yzm": $("#gyzm").val()
+        "yzm": $("#gyzm").val(),
+        "username": <?php echo $userinfo['username'];?>
       },
       dataType: "json",
       success: function (data) {

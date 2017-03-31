@@ -63,7 +63,27 @@ class JingjirenController extends Base {
 		 }	
 		 $x['comment_id'] = 'c-88-'.$v['userid'];	
 		 $data[$k]['comm_count'] = M('comments')->where($x)->count();
-		 $data[$k]['comm_count'] = M('comments')->where($x)->count();
+
+		 //fix by tianhua on 2017.03.31
+		 $chenjiao_chuzu_count = M('chuzu')-> where("(username='".$t['username']."' OR jjr_id='".$v['userid']."') and zaizu=0")->count();
+		 $chenjiao_ershou_count = M('ershou')-> where("(username='".$t['username']."' OR jjr_id='".$v['userid']."') and zaishou=0")->count();
+
+		 $weituo_chuzu_count = M('chuzu')-> where("jjr_id='".$v['userid']."' and pub_type!=1")->count();
+		 $weituo_ershou_count = M('ershou')-> where("jjr_id='".$v['userid']."' and pub_type!=1")->count();
+
+		 $arr2 = M('yuyue') -> where("fromuser ='".$t['username']."' and DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= FROM_UNIXTIME(inputtime)")
+		 		 -> select();
+	     $arr = Array();
+	     foreach($arr2 as $x=>$value){
+	        $ershoudata = M("ershou") -> where('id='.$value['fromid']) -> find();
+	        if(count($ershoudata) >0){
+	          array_push($arr, $value);
+	        }
+	     }
+		 $data[$k]['chenjiao_count'] = $chenjiao_chuzu_count + $chenjiao_ershou_count;
+		 $data[$k]['weituo_count'] = $weituo_chuzu_count + $weituo_ershou_count;
+		 $data[$k]['kanfang_count'] = count($arr);
+		 //end fix
 	}
 	$SEO['title']=cache('Config.sitename');
 	$SEO['description']=cache('Config.siteinfo');
@@ -89,7 +109,29 @@ class JingjirenController extends Base {
       $db = M('member');
       $info = $db -> where('userid='.$_GET['id']) -> find();
       $info['agent'] = M('member_agent')->where('userid='.$_GET['id']) -> find();
-      $this->assign("info", $info);	  
+
+
+     //fix by tianhua on 2017.03.31
+	 $chenjiao_chuzu_count = M('chuzu')-> where("(username='".$info['username']."' OR jjr_id='".$_GET['id']."') and zaizu=0")->count();
+	 $chenjiao_ershou_count = M('ershou')-> where("(username='".$info['username']."' OR jjr_id='".$_GET['id']."') and zaishou=0")->count();
+
+	 $weituo_chuzu_count = M('chuzu')-> where("jjr_id='".$_GET['id']."' and pub_type!=1")->count();
+	 $weituo_ershou_count = M('ershou')-> where("jjr_id='".$_GET['id']."' and pub_type!=1")->count();
+
+	 $arr2 = M('yuyue') -> where("fromuser ='".$info['username']."' and DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= FROM_UNIXTIME(inputtime)")
+	 		 -> select();
+     $arr = Array();
+     foreach($arr2 as $x=>$value){
+        $ershoudata = M("ershou") -> where('id='.$value['fromid']) -> find();
+        if(count($ershoudata) >0){
+          array_push($arr, $value);
+        }
+     }
+	 $info['chenjiao_count'] = $chenjiao_chuzu_count + $chenjiao_ershou_count;
+	 $info['weituo_count'] = $weituo_chuzu_count + $weituo_ershou_count;
+	 $info['kanfang_count'] = count($arr);
+	 //end fix
+	 $this->assign("info", $info);	  
 
 
 	if($_GET['id'] && $_GET['t']){

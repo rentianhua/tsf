@@ -117,7 +117,6 @@ em, i, b, strong {
           <ol class="drop-list" style="display: none;">
             <li class="item" onclick="Filter('mj')">不限</li>
             <li class="item" onclick="Filter('mj','0-50')">50平以下</li>
-            <li class="item" onclick="Filter('mj','30-50')">30-50平</li>
             <li class="item" onclick="Filter('mj','50-70')">50-70平</li>
             <li class="item" onclick="Filter('mj','70-90')">70-90平</li>
             <li class="item" onclick="Filter('mj','90-110')">90-110平</li>

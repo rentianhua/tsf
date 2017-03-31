@@ -168,7 +168,7 @@ foreach($fields as $f){
                   <span>
                   <a target="_blank" href="#">{$vo.mainarea}</a>                  
                   </span></div>
-                  <div class="achievement"><a target="_blank" href=""><span>历史成交0套</span>,&nbsp;</a><a target="_blank" href=""><span>独家委托0套</span>,&nbsp;</a><span>最近30天带看0次</span></div>
+                  <div class="achievement"><a target="_blank" href=""><span>历史成交{$vo.chenjiao_count}套</span>,&nbsp;</a><a target="_blank" href=""><span>独家委托{$vo.weituo_count}套</span>,&nbsp;</a><span>最近30天带看{$vo.kanfang_count}次</span></div>
                   <div class="label">
                     <?php
             $array = explode(",",$vo['biaoqian']);

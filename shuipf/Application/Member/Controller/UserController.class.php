@@ -54,7 +54,7 @@ class UserController extends MemberbaseController {
 
         foreach($arr2 as $k=>$value){
           $data = M($value['fromtable']) -> where('id='.$value['fromid']) -> find();
-          if(count($data) >0 && $data['status']!="1"){
+          if(count($data) >0){
             array_push($arr, $value);
           }
         }
@@ -180,33 +180,29 @@ class UserController extends MemberbaseController {
     //$this->display();
     if(IS_GET){
       $userinfo = $this -> userinfo = service("Passport") -> getInfo();
-
-      if($_GET[t]){
-        $t = $_GET['t'];
-        if($userinfo['modelid'] == 36){
-          $sql = "fromuser=".$userinfo['username'];
-        }
-        else{
+      if($userinfo['modelid'] == 36){
+        $sql = "fromuser=".$userinfo['username'];
+      }
+      else{
+        if($_GET[t]){
           if($_GET['t'] == 1){
             $sql = "username = ".$userinfo['username'];
           }else{
             $sql = "fromuser = ".$userinfo['username'];
           }
         }
-        $arr2 = M('yuyue') -> where($sql) -> order('inputtime DESC')->select();
-        $arr = Array();
-
-        foreach($arr2 as $k=>$value){
-          $data = M("ershou") -> where('id='.$value['fromid']) -> find();
-          if(count($data) >0 &&$data['status']!="1"){
-            array_push($arr, $value);
-          }
-        }
-        $this->assign("arr", $arr);
-        $this->display();
-      }else{
-        $this->error("非法操作");
       }
+      $arr2 = M('yuyue') -> where($sql) -> order('inputtime DESC')->select();
+      $arr = Array();
+
+      foreach($arr2 as $k=>$value){
+        $data = M("ershou") -> where('id='.$value['fromid']) -> find();
+        if(count($data) >0){
+          array_push($arr, $value);
+        }
+      }
+      $this->assign("arr", $arr);
+      $this->display();
     }else{
       $this->error("非法操作");
     }

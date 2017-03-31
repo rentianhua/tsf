@@ -340,7 +340,7 @@ public function jjrshow()
 
 	        foreach($arr2 as $k=>$value){
 	          $data = M("ershou") -> where('id='.$value['fromid']) -> find();
-	          if(count($data) >0 &&$data['status']!="1"){
+	          if(count($data) >0){
 	            array_push($rs, $value);
 	          }
 	        }
@@ -441,7 +441,7 @@ public function jjrshow()
 
 	        foreach($arr2 as $k=>$value){
 	          $data = M($value['fromtable']) -> where('id='.$value['fromid']) -> find();
-	          if(count($data) >0 && $data['status']!="1"){
+	          if(count($data) >0){
 	            array_push($rs, $value);
 	          }
 	        }
