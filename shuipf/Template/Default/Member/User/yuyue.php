@@ -51,6 +51,9 @@
                         <img src="{:C('app_ui')}images/delete.png" title="删除" style="width:20px;height:20px;">
                       </a>
                       </if>
+                      <if condition="$vo['lock'] neq 0">
+                        <span class="w-red">(已锁)</span> 
+                      </if>
                   </td>
                 </tr>
         </volist>

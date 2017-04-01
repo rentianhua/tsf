@@ -177,9 +177,18 @@
             <div>
               <if condition="$agent['sfzpic'] eq ''">
                 <input type="text" class="input" style="width:300px;" id="sfzpic" name="sfzpic">
-                <input type="button" value="上传图片" onclick="flashupload1('sfzpic_images', '附件上传','sfzpic',submit_images,'1,jpg|jpeg|gif|png|bmp,0,,,1','Content','6')" class="button">
+                <input type="button" value="上传图片" onclick="flashupload1('sfzpic_images', '附件上传','sfzpic',submit_images2,'3,jpg|jpeg|gif|png|bmp,0,,,1','Content','6')" class="button">
                 <else />
-                <img width="90" height="90" src="{$agent.sfzpic}"> </if>
+              <!--   <img width="90" height="90" src="{$agent.sfzpic}">  -->
+                 <?php
+                  $images = explode(',',$agent['sfzpic']); 
+                  for($index=0;$index<count($images);$index++) 
+                  { 
+                      $url ="http://www.taoshenfang.com".$images[$index];
+                      echo '<img width="90" height="90" src="'.$url.'">';
+                  } 
+                 ?>
+                </if>
             </div>
           </li>
           <li>

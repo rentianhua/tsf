@@ -94,8 +94,8 @@ class UserController extends Base {
 				}
 			//修改身份证照片		
 			if($_POST['sfzpic']){
-				$_POST['sfzpic']=json_decode($_POST['sfzpic'],true);
-				$data['sfzpic'] = serialize($_POST['sfzpic']);
+				//$_POST['sfzpic']=json_decode($_POST['sfzpic'],true);
+				$data['sfzpic'] = $_POST['sfzpic'];//serialize($_POST['sfzpic']);
 			}
 			//修改从业年限
 			if($_POST['worktime']!=""){
@@ -1323,14 +1323,19 @@ public function jjrshow()
 				echo '{"success":162,"info":"数据不完整"}';
 				exit;
 			}
-			$db = M($_POST['table']);
-			$sql = "(username='".$_POST['username']."' OR jjr_id='".$_POST['userid']."') and ";
-			if($_POST['table'] == "ershou"){
-				$sql .= 'zaishou=0';
-			}else{
-				$sql .= 'zaizu=0';
-			}
-			$arr = $db -> where($sql) -> select();
+			// $db = M($_POST['table']);
+			// $sql = "(username='".$_POST['username']."' OR jjr_id='".$_POST['userid']."') and ";
+			// if($_POST['table'] == "ershou"){
+			// 	$sql .= 'zaishou=0';
+			// }else{
+			// 	$sql .= 'zaizu=0';
+			// }
+			//$arr = $db -> where($sql) -> select();
+			//fix by tianhua on 2017.03.31
+			$arry1 = M('ershou')->where("(username='".$_POST['username']."' OR jjr_id='".$_POST['userid']."') and zaishou=0")->select();
+        	$arry2 = M('chuzu')->where("(username='".$_POST['username']."' OR jjr_id='".$_POST['userid']."') and zaizu=0")->select();
+			$arr = array_merge( $arry1,$arry2);
+			//end fix
 			foreach($arr as $k=>$v){
 				$arr[$k]['xiaoquname'] = M('xiaoqu')->where('id='.$v['xiaoqu'])->getfield('title');
 			}

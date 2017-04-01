@@ -198,9 +198,11 @@ h2 {
               <div class="house">
                 <h2>成交房源</h2>
                 <?php 
-				$a['username'] = $info['username'];
-				$a['zaishou'] = 0;
-				$list_cj = M('ershou')->where($a)->select();
+				// $a['username'] = $info['username'];
+				// $a['zaishou'] = 0;
+        $arry1 = M('ershou')->where("(username='".$info['username']."' OR jjr_id='".$info['userid']."') and zaishou=0")->select();
+        $arry2 = M('chuzu')->where("(username='".$info['username']."' OR jjr_id='".$info['userid']."') and zaizu=0")->select();
+				$list_cj = array_merge( $arry1,$arry2);
 				if(!$list_cj){
                 echo '<div class="nofang" id="nosold" style="display:block">
                   <p>暂无成交房源。</p>
