@@ -201,7 +201,7 @@ function fileQueueError(file, errorCode, message)
 		errormsg = "请不要上传空文件";
 		break;
 	case SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED:
-		errormsg = "队列文件数量超过设定值";
+		errormsg = "超过单次上传最大数量";
 		break;
 	case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
 		errormsg = "文件尺寸超过设定值";

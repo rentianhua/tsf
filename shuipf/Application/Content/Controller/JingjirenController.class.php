@@ -163,6 +163,14 @@ function multi_array_sort($multi_array,$sort_key,$sort=SORT_ASC){
 	if($_GET['id'] && $_GET['t']){
 		$u['username'] = M('member') -> where('userid='.$_GET['id']) -> getField('username');
 		$list = M('ershou') -> where($u) -> select();
+		//fixed by tianhua on 2017-04-10
+		foreach($list as $x=>$value){
+	        $guanzhu_count = M("guanzhu") -> where("fromtable='ershou' and fromid=".$value['id']) -> count();
+	        $yuyue_count = M("yuyue") -> where("fromtable='ershou' and fromid=".$value['id']) -> count();
+	        $list[$x]["guanzhu_count"] = $guanzhu_count;
+	        $list[$x]["yuyue_count"] = $yuyue_count;
+     	}
+     	//end fix
 		if($list){
 			$this->assign("list", $list);
 		}

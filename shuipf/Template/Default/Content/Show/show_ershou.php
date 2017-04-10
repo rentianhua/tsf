@@ -770,8 +770,18 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
           <ul>
             <volist name="data" id="vo">
               <li>
-                <div class="pic"><a class="LOGCLICK" href="{$vo.data.url}" target="_blank"><img src="{$vo.data.thumb}" class="new-default-icon"></a><span>{$vo.data.zongjia}万</span></div>
-                <div class="htitle"> <span class="name">{$vo.data.xiaoquname}</span> <span class="info">{$vo.data.shi}室{$vo.data.ting}厅/{$vo.data.jianzhumianji}平米</span> </div>
+                <div class="pic">
+                  <a class="LOGCLICK" href="{$vo.data.url}" target="_blank">
+                    <img src="{$vo.data.thumb}" class="new-default-icon">
+                  </a>
+                  <span>{$vo.data.zongjia}万</span>
+                </div>
+                <div class="htitle"> 
+                  <span class="house-name">{$vo.data.title}</span> 
+                </div>
+                <div>
+                  <span class="info">{$vo.data.shi}室{$vo.data.ting}厅/{$vo.data.jianzhumianji}平米</span> 
+                </div>
                 <div class="desc"> <span class="front"></span> <span class="back"></span> </div>
               </li>
             </volist>

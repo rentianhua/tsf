@@ -268,7 +268,7 @@ h2 {
                           <p> {$vo1.ceng}(共{$vo1.zongceng}层)/ {$vo1.fangling}年房{$vo1.jianzhutype}</p>
                         </div>
                         <div class="label">
-                          <p>95人关注 / 共48次带看 / {$vo1.inputtime|date='Y-m-d',###}发布</p>
+                          <p>{$vo1.guanzhu_count}人关注 / 共{$vo1.yuyue_count}次带看 / {$vo1.inputtime|date='Y-m-d',###}发布</p>
                         </div>
                       </div>
                     </div>
