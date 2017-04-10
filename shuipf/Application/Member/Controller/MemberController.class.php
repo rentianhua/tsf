@@ -668,6 +668,11 @@ class MemberController extends AdminBase {
 					if (service("Passport")->userDelete($uid)) {
 						$connect->where(array("uid" => $uid))->delete();
 					}
+
+                    if (M("member_agent")->where(array("userid" => $uid))->find()) 
+                    {
+                        M("member_agent")->where(array("userid" => $uid))->delete();
+                    }
 				}
 			}
             $this->success("删除成功！");

@@ -205,7 +205,9 @@
       <div>
         <span class="w-head">建筑类型：</span>
         <select name="jianzhutype" data-am-selected>
-          <option value="板塔结合" <if condition="$info['jianzhutype'] eq '板塔结合'">selected</if>>板塔结合</option>
+          <option value="塔板结合" <if condition="$info['jianzhutype'] eq '塔板结合'">selected</if>>塔板结合</option>
+          <option value="塔楼" <if condition="$info['jianzhutype'] eq '塔楼'">selected</if>>塔楼</option>
+          <option value="板楼" <if condition="$info['jianzhutype'] eq '板楼'">selected</if>>板楼</option>
         </select>
       </div>
       <div>

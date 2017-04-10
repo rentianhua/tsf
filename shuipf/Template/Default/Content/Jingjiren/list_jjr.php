@@ -47,6 +47,7 @@ foreach($fields as $f){
         <input to="filter" type="hidden" id="bq" name="bq" value="<?php echo $fitervalue['bq']; ?>" />
         <input to="filter" type="hidden" id="or" name="od" value="<?php echo $fitervalue['od']; ?>" />
         <input to="filter" type="hidden" id="kw" name="kw" value="<?php echo $fitervalue['kw']; ?>" />
+        <input to="filter" type="hidden" id="order" name="order" value="<?php echo $fitervalue['order']; ?>" />
     </div>
       <div class="bd" id="filter-options">
         <dl class="dl-lst clear">
@@ -127,9 +128,9 @@ foreach($fields as $f){
       <div class="filter-bar01">
         <div class="sort-bar" id="sort-bar"><span>排序：</span>
           <div class="sort-parent <?php if(!$_GET['order']){echo 'on';} ?>"> <a href="{$url}"><span>显示全部</span></a></div>
-          <div class="sort-parent"><a href="#"><span>好评率从高到低</span></a></div>
-          <div class="sort-parent"><a href="#"><span>成交量从高到低</span></a></div>
-          <div class="sort-parent"><a href="#"><span>带看量从高到低</span></a></div>
+          <div class="sort-parent <?php if($_GET['order']=='haoping_count_DESC'){echo 'on';} ?>"><a href="javascript:Filter('order','haoping_count_DESC');"><span>好评率从高到低</span></a></div>
+          <div class="sort-parent <?php if($_GET['order']=='chenjiao_count_DESC'){echo 'on';} ?>"><a href="javascript:Filter('order','chenjiao_count_DESC');"><span>成交量从高到低</span></a></div>
+          <div class="sort-parent <?php if($_GET['order']=='kanfang_count_DESC'){echo 'on';} ?>"><a href="javascript:Filter('order','kanfang_count_DESC');"><span>带看量从高到低</span></a></div>
         </div>
       </div>
     
@@ -203,6 +204,9 @@ foreach($fields as $f){
 </div>
 <script>
  function Filter(t,v){
+  if(t=="order"){
+    $("#order").val(v);
+  }
     if(t == "ct"){
 		$("#ct").val(v);
 	}

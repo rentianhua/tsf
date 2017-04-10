@@ -40,8 +40,8 @@
                     <div id="mpassword"></div></li>
 					<li><input type="password" id="rpassword2" name="rpassword2" placeholder="请确认密码"><i>*</i>
                     <div id="mpassword2"></div></li>
-                    <li class="for36" style="display:none"><input type="text" id="realname" name="realname" placeholder="请输入真实姓名"><i>*</i>
-                    <div id="mrealname"></div></li>				
+                    <!-- <li class="for36" style="display:none"><input type="text" id="realname" name="realname" placeholder="请输入真实姓名"><i>*</i>
+                    <div id="mrealname"></div></li>	 -->			
 					<li><input type="submit" id="submit" class="am-btn-primary" value="立即注册"></li>
 				</ul>
 			</form>

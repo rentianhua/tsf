@@ -61,8 +61,8 @@ class JingjirenController extends Base {
 		 }else{
 			 $data[$k]['tel'] = $t['vtel'];
 		 }	
-		 $x['comment_id'] = 'c-88-'.$v['userid'];	
-		 $data[$k]['comm_count'] = M('comments')->where($x)->count();
+		 //$x['comment_id'] = 'c-88-123';//'c-88-'.$v['userid'];	
+		 $data[$k]['comm_count'] = M('comments')->where("comment_id='c-88-".$v['userid']."'")->count();
 
 		 //fix by tianhua on 2017.03.31
 		 $chenjiao_chuzu_count = M('chuzu')-> where("(username='".$t['username']."' OR jjr_id='".$v['userid']."') and zaizu=0")->count();
@@ -85,6 +85,17 @@ class JingjirenController extends Base {
 		 $data[$k]['kanfang_count'] = count($arr);
 		 //end fix
 	}
+
+	foreach ($data as $key => $value) {
+		$chenjiao[$key] = $value['chenjiao_count'];
+		$kanfang[$key] = $value['kanfang_count'];
+	}
+
+	if($_GET['order']=="chenjiao_count_DESC")
+	   array_multisort($chenjiao,SORT_DESC,$data);
+	else if($_GET['order']=="kanfang_count_DESC")
+	   array_multisort($kanfang,SORT_DESC,$data);
+
 	$SEO['title']=cache('Config.sitename');
 	$SEO['description']=cache('Config.siteinfo');
 	$SEO['keyword']=cache('Config.sitekeywords');
@@ -98,6 +109,21 @@ class JingjirenController extends Base {
 
   }
 
+function multi_array_sort($multi_array,$sort_key,$sort=SORT_ASC){ 
+	if(is_array($multi_array)){ 
+	foreach ($multi_array as $row_array){ 
+	if(is_array($row_array)){ 
+	$key_array[] = $row_array[$sort_key]; 
+	}else{ 
+	return false; 
+	} 
+	} 
+	}else{ 
+	return false; 
+	} 
+	array_multisort($key_array,$sort,$multi_array); 
+	return $multi_array; 
+} 
   
 
   //经纪人详情

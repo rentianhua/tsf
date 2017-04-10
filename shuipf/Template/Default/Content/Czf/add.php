@@ -170,7 +170,9 @@
       <div>
         <span class="w-head">建筑类型：</span>
         <select name="jianzhutype" data-am-selected>
-          <option value="板塔结合" selected>板塔结合</option>
+          <option value="板楼" selected>板楼</option>
+          <option value="塔楼" selected>塔楼</option>
+          <option value="塔板结合" selected>塔板结合</option>
         </select>
       </div>
        <div>

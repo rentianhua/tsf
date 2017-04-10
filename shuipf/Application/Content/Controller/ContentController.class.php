@@ -421,10 +421,20 @@ class ContentController extends AdminBase {
 				}
 			  }
 			}
-			
 		  /*edd by wst end*/
             $status = $this->Content->data($_POST['info'])->edit();
             if ($status) {
+                //update by tianhua on 2017.04.01
+                if($_POST['info']['catid']==6){
+                    $hanle_db = M("ershou")->where(array("id" => $id))->find();
+                    if($hanle_db["contract"]=="a:0:{}")
+                      $newvalue["contract"]="";
+                    if($hanle_db["idcard"]=="a:0:{}")
+                      $newvalue["idcard"]="";
+
+                    M("ershou")->where(array("id" => $id))->save($newvalue);
+                }
+                //end fix
                 //解除信息锁定
                 M("Locking")->where(array("userid" => User::getInstance()->id, "catid" => $catid, "id" => $id))->delete();
               $this->success("修改成功！");
@@ -503,6 +513,7 @@ class ContentController extends AdminBase {
             //模型ID
             $modelid = $Categorys['modelid'];
             $model = ContentModel::getInstance($modelid);
+
             //检查是否锁定
             if (false === $model->locking($this->catid, $id)) {
                 $this->error($model->getError());

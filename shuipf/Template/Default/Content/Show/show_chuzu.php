@@ -112,7 +112,7 @@ if($jjr_id == 0){	//用户自售
       <div class="clear"></div>
 
       <p><i>地铁：</i>{$ditiexian|substr=###,0,-3}</p>
-
+     <!--  <p><i>地铁：</i>{$ditiexian}</p> -->
       <p><i>小区：</i>{$xiaoqu|getxiaoquName=###}</p>
 
       <p><i>位置：</i>{$city|getareaName=###} {$area|getareaName=###}</p>

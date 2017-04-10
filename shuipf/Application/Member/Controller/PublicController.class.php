@@ -400,7 +400,9 @@ public function doRegister() {
 		if ($userid > 0) {
 			//写入真实姓名
 			if ($post['modelid'] == 36) {
-				$x['realname'] = $post['realname'];
+				//fixed by tianhua
+				//$x['realname'] = $post['realname'];
+				//end fix
 				$x['userid']=$userid;
 				M('member_agent')->add($x);
 			}
@@ -523,6 +525,14 @@ public function api_register() {
 			}
 			$userid = service("Passport")->userRegister($info['username'], $info['password']);
 			if ($userid > 0) {
+				//fixed by tianhua
+				//写入真实姓名
+				if ($info['modelid'] == 36) {
+					$x['userid']=$userid;
+					M('member_agent')->add($x);
+				}
+				//end fix
+
 				//获取用户信息
 				$memberinfo = service("Passport")->getLocalUser((int)$userid);
 				$info['username'] = $memberinfo['username'];

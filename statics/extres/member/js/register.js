@@ -8,8 +8,8 @@ var register = {
         var $rnickname = $("#rnickname");
         var $mnickname = $("#mnickname");
 		var $musername = $("#musername");
-		var $rtruename = $("#realname");
-		var $mtruename = $("#mrealname");
+		// var $rtruename = $("#realname");
+		//var $mtruename = $("#mrealname");
 		var $mtype = $("#mtype");
 
         var $submit = $('#submit');
@@ -234,7 +234,7 @@ var register = {
 						username: $username.val(),
                         password: $rpassword.val(),
                         password2: $rpassword2.val(),
-						realname: $rtruename.val(),
+						// realname: $rtruename.val(),
                         modelid: $(".checked input").attr("value")
                     },
                     dataType: "json",
