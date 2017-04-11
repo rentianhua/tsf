@@ -996,7 +996,12 @@ public function jjrshow()
 			if(!$f){
 				echo '{"success":142,"info":"没有该房源"}';
 				exit;
+			}else{
+				//fix by tianhua on 2017-04-11
+				$_POST['username'] = $f["username"];
+				//end fix
 			}
+
 			if($_POST['modelid'] == 35 && $f['lock'] == 1){
 				echo '{"success":143,"info":"该房源已锁定"}';
 				exit;
@@ -1222,6 +1227,10 @@ public function jjrshow()
 			if(!$f){
 				echo '{"success":159,"info":"没有该房源"}';
 				exit;
+			}else{
+				//fix by tianhua on 2017-04-11
+				$_POST['username'] = $f["username"];
+				//end fix
 			}
 			if($_POST['modelid'] == 35 && $f['lock'] == 1){
 				echo '{"success":160,"info":"该房源已锁定"}';

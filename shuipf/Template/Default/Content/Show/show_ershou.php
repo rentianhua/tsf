@@ -777,7 +777,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
                   <span>{$vo.data.zongjia}万</span>
                 </div>
                 <div class="htitle"> 
-                  <span class="house-name">{$vo.data.title}</span> 
+                  <span class="name">{$vo.data.title}</span> 
                 </div>
                 <div>
                   <span class="info">{$vo.data.shi}室{$vo.data.ting}厅/{$vo.data.jianzhumianji}平米</span> 
