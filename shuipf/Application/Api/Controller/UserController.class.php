@@ -950,9 +950,13 @@ public function jjrshow()
 	public function edit_ershou(){
 		if(IS_POST){
 			$db = M('ershou');
+			//fix by tianhua on 2017-04-12
+			$aa['id']=$_POST['id'];
+			//end fix
+
 			//合同上传
 			if($_POST['id']!='' && $_POST['contract']!=''){
-				$aa['id']=$_POST['id'];
+				//$aa['id']=$_POST['id'];
 				$_POST['contract']=json_decode($_POST['contract'],true);
 				$_POST['contract'] = serialize($_POST['contract']);
 				$bb['contract'] = $_POST['contract'];
@@ -964,7 +968,7 @@ public function jjrshow()
 			}
 			//身份证上传			
 			if($_POST['id']!='' && $_POST['idcard']!=''){
-				$aa['id']=$_POST['id'];
+				//$aa['id']=$_POST['id'];
 				$_POST['idcard'] = json_decode($_POST['idcard'],true);
 				$_POST['idcard'] = serialize($_POST['idcard']);
 				$bb['idcard'] = $_POST['idcard'];
@@ -998,7 +1002,7 @@ public function jjrshow()
 				exit;
 			}else{
 				//fix by tianhua on 2017-04-11
-				$_POST['username'] = $f["username"];
+				$_POST['username'] = $f['username'];
 				//end fix
 			}
 
