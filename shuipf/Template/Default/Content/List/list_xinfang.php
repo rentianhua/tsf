@@ -308,14 +308,14 @@ foreach($fields as $f){
                     <div class="where">
                       <span class="zone"><span>
                       <?php 
-                      $l=count($vo['data']['shiarea']);
-                      if($l>1)
-                        { $s=strval($vo['data']['shiarea'][1]);
-                          $d=strval($vo['data']['shiarea'][$l-1]);
+                      $l= explode(',',$vo['shiarea']);
+                      if(count($l)>1)
+                        { $s=$l[0];
+                          $d=$l[count($l)-1];
                           echo $s,"-",$d;
                       }
                       else
-                        {echo $vo['data']['shiarea'][1];};
+                        {echo $l[0];};
                       ?>
                       室 / {$vo.mianjiarea}平米</span></span>
                     </div>
