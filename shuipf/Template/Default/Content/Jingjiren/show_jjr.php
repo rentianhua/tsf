@@ -230,8 +230,12 @@ h2 {
                         </div>
                       </div>
                       <div class="col-2">
-                        <p>单价&nbsp;<span><?php  echo ceil($vo2['zongjia']*10000/$vo2['jianzhumianji'])?></span>&nbsp;元/平</p>
-                        <p>总价&nbsp;<span>{$vo2.zongjia}万</span></p>
+                      <if condition="$vo2.catid eq 6"> 
+                          <p>单价&nbsp;<span><?php  echo ceil($vo2['zongjia']*10000/$vo2['jianzhumianji'])?></span>&nbsp;元/平</p>
+                          <p>总价&nbsp;<span>{$vo2.zongjia}万</span></p>
+                      <else />
+                          <p>出租&nbsp;<span>{$vo2.zujin}元／月</span></p>
+                      </if>  
                       </div>
                     </div>
                     <!--<div class="transaction">
