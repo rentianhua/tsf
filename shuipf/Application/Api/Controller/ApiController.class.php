@@ -271,7 +271,10 @@ class ApiController extends ShuipFCMS {
 					'sms_param' => array('name' => '','product' => '')//短信参数
 					 );
 					 $sms = service("Sms", $config);
-					 $sms->send($rs[buytel],'SMS_43490001', array('name' => $rs[buytel],'product' =>'淘深房','cardno'=>$rs[yhq_no]));
+					 //fix by tianhua 2017.04.12
+					 //$sms->send($rs[buytel],'SMS_43490001', array('name' => $rs[buytel],'product' =>'淘深房','cardno'=>$rs[yhq_no]));
+					 $sms->send($rs[buytel],'SMS_43490001', array('name' => $rs[buytel],'product' =>'淘深房','cardno'=>$rs[order_no]));
+					 //end fix
 					//发送短信结束
 					M('coupon')->where($u)->setInc('sms_status',1);
 				}
