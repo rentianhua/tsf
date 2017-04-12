@@ -234,7 +234,7 @@ h2 {
                           <p>单价&nbsp;<span><?php  echo ceil($vo2['zongjia']*10000/$vo2['jianzhumianji'])?></span>&nbsp;元/平</p>
                           <p>总价&nbsp;<span>{$vo2.zongjia}万</span></p>
                       <else />
-                          <p>出租&nbsp;<span>{$vo2.zujin}元／月</span></p>
+                          <p>出租&nbsp;<span>{$vo2.zujin}</span>&nbsp;元/平</p>
                       </if>  
                       </div>
                     </div>
