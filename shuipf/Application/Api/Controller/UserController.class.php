@@ -261,8 +261,8 @@ class UserController extends Base {
 		foreach($list as $k => $v){
 			$list[$k]['info'] = M('member')->where('userid='.$v['userid'])->find();
 			if ($list[$k]['info']['userpic']=="") {
-			$list[$k]['info']['userpic'] =       "http://www.taoshenfang.com/statics/extres/member/images/noavatar.jpg";
-		}
+				$list[$k]['info']['userpic'] =       "http://www.taoshenfang.com/statics/extres/member/images/noavatar.jpg";
+			}
 			if($list[$k]['info']['vtel'] != ''){
 			    $list[$k]['info']['ctel'] = cache('Config.tel400').','.$list[$k]['info']['vtel'];
 				$list[$k]['info']['vtel'] = cache('Config.tel400').'转'.$list[$k]['info']['vtel']; 
@@ -270,8 +270,11 @@ class UserController extends Base {
 				 $data[$k]['ctel'] =  cache('Config.tel400');
 				 $data[$k]['vtel'] =  cache('Config.tel400');
 			 }
-			 $x['comment_id'] = 'c-88-'.$v['userid'];	
-			 $list[$k]['comm_count'] = M('comments')->where($x)->count();
+			 //fix by tianhua on 2017-04-12
+			 //$x['comment_id'] = 'c-88-'.$v['userid'];	
+			 //$list[$k]['comm_count'] = M('comments')->where($x)->count();
+			  $list[$k]['comm_count'] = M('comments')->where("comment_id='c-88-".$v['userid']."'")->count();
+			 //end fix
 		 }
 		echo json_encode($list);
 		exit;
