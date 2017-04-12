@@ -509,7 +509,13 @@ class HouseController extends ShuipFCMS {
 		if(!$coupon){
 			echo '{"success":70,"info":"该优惠券不存在"}';
 		    exit;
-			}else{
+		}else{
+			//fix by tianhua on 2017-04-12
+			if($coupon['yigou']+1 > $coupon['maxnum']){
+				echo '{"success":68,"info":"购买失败,此优惠券已经售完"}';
+		   		exit;
+			}
+			//end fix
 		$data['coupon_name'] = $coupon['title'];
         $data['difu'] = $coupon['vmoney'];
         $data['shifu'] = $coupon['pay'];		
