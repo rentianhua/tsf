@@ -591,7 +591,17 @@ class MemberController extends AdminBase {
                 if (false === $this->member->where(array('userid' => $userid))->save($data)) {
                     $this->error('更新失败！');
                 }
-                $this->success("更新成功！", U("Member/index"));
+
+                //fix by tianhua on 2017-04-13
+                if($modelid==35)
+                {
+                    $this->success("更新成功！", U("Member/index"));
+                }
+                else{
+                    $this->success("更新成功！", U("Member/jjrlist"));
+                }
+                //end fix
+                //$this->success("更新成功！", U("Member/index"));
             } else {
                 $this->error($this->member->getError());
             }
@@ -675,7 +685,16 @@ class MemberController extends AdminBase {
                     }
 				}
 			}
-            $this->success("删除成功！");
+            //fix by tianhua on 2017-04-13
+            if($modelid==35)
+            {
+                $this->success("删除成功！", U("Member/index"));
+            }
+            else{
+                $this->success("删除成功！", U("Member/jjrlist"));
+            }
+            //end fix
+            //$this->success("删除成功！");
         }
     }
 
