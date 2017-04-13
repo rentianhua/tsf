@@ -274,7 +274,30 @@ class UserController extends Base {
 			 //$x['comment_id'] = 'c-88-'.$v['userid'];	
 			 //$list[$k]['comm_count'] = M('comments')->where($x)->count();
 			  $list[$k]['comm_count'] = M('comments')->where("comment_id='c-88-".$v['userid']."'")->count();
+			  $list[$k]['fb_rate'] = 92;
 			 //end fix
+			 
+			 //fix by tianhua on 2017.04.13
+			 $chenjiao_chuzu_count = M('chuzu')-> where("(username='".$list[$k]['info']['username']."' OR jjr_id='".$list[$k]['info']['userid']."') and zaizu=0")->count();
+			 $chenjiao_ershou_count = M('ershou')-> where("(username='".$list[$k]['info']['username']."' OR jjr_id='".$list[$k]['info']['userid']."') and zaishou=0")->count();
+
+			 $weituo_chuzu_count = M('chuzu')-> where("jjr_id='".$list[$k]['info']['userid']."' and pub_type!=1")->count();
+			 $weituo_ershou_count = M('ershou')-> where("jjr_id='".$list[$k]['info']['userid']."' and pub_type!=1")->count();
+
+			 $arr2 = M('yuyue') -> where("fromuser ='".$list[$k]['info']['username']."' and DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= FROM_UNIXTIME(inputtime)")
+			 		 -> select();
+		     $arr = Array();
+		     foreach($arr2 as $x=>$value){
+		        $ershoudata = M("ershou") -> where('id='.$value['fromid']) -> find();
+		        if(count($ershoudata) >0){
+		          array_push($arr, $value);
+		        }
+		     }
+			 
+			$list[$k]['chengjiao_count']= $chenjiao_chuzu_count + $chenjiao_ershou_count;
+			$list[$k]['weituo_count']= $weituo_chuzu_count + $weituo_ershou_count;
+			$list[$k]['daikan_count']=count($arr);
+			//end fix
 		 }
 		echo json_encode($list);
 		exit;
@@ -337,6 +360,8 @@ public function jjrshow()
 		$info['chengjiao_count']=$chenjiao_chuzu_count + $chenjiao_ershou_count;
 		$info['weituo_count']=$weituo_chuzu_count + $weituo_ershou_count;
 		$info['daikan_count']=count($arr);
+
+		$info['fb_rate'] = 92;
 		//end fix
         echo json_encode($info);
     }
