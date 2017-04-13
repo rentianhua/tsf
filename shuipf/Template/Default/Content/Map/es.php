@@ -209,6 +209,7 @@ em, i, b, strong {
               <ol class="drop-list" style="display: none;">
                 <li class="item" onclick="Filter('zx')">不限</li>
                 <li class="item" onclick="Filter('zx','精装')">精装修</li>
+                <li class="item" onclick="Filter('zx','唯一住房')">唯一住房</li>
               </ol>
             </li>
           </ol>
