@@ -298,7 +298,10 @@ function submit_images(uploadid, returnid) {
 function submit_images2(uploadid, returnid) {
     var d = uploadid.iframe.contentWindow;
     var in_content = d.$("#att-status").html().substring(1);
-    in_content = in_content.replace('|',',');
+    var x = in_content.split('|').length;
+    for (var i = 0; i < x; i++) {
+        in_content = in_content.replace('|',',');
+    }
     $('#' + returnid).attr("value", in_content);
 }
 
