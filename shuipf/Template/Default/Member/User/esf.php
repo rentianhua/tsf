@@ -67,7 +67,7 @@ $userinfo = $this->userinfo = service("Passport")->getInfo();
           <span class="am-badge am-badge-primary am-text-sm">身份证已上传</span>
           </if> 
           <if condition="($vo['contract'] eq '') OR ($vo['idcard'] eq '')">  
-          <button onClick="chg({$vo.id}<if condition="$vo['contract'] neq ''">,1</if><if condition="$vo['idcard'] neq ''">,1</if>);" type="button" class="am-btn am-btn-xs am-btn-default" data-am-modal="{target: '#my-popup'}">照片上传</button>
+          <button onClick="chg({$vo.id}<if condition="$vo['contract'] neq ''">,1,0</if><if condition="$vo['idcard'] neq ''">,0,1</if>);" type="button" class="am-btn am-btn-xs am-btn-default" data-am-modal="{target: '#my-popup'}">照片上传</button>
           </if>  
           <if condition="$vo['status'] eq 99">
 			  <if condition="$vo['zaishou'] eq 1">
@@ -139,7 +139,7 @@ $userinfo = $this->userinfo = service("Passport")->getInfo();
 <script>
 function chg(id,a,b){
 	$("#id").val(id);
-	if(a){
+	//if(a){
 		if(a == 1){
 			$("#contract_con").hide();
 			$("#contract").removeAttr('name');
@@ -147,8 +147,8 @@ function chg(id,a,b){
 			$("#contract_con").show();
 			$("#contract").attr('name','contract');
 		}
-	}
-	if(b){
+	// }
+	// if(b){
 		if(b == 1){
 			$("#idcard_con").hide();
 			$("#idcard").removeAttr('name');
@@ -156,7 +156,7 @@ function chg(id,a,b){
 			$("#idcard_con").show();
 			$("#idcard").attr('name','idcard');
 		}
-	}
+	//}
 }
 function apply_shouchu(id){	
 	$.ajax({

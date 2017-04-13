@@ -122,14 +122,19 @@ class EsfController extends Base {
 		if($_POST['contract'] && $_POST['contract'] != ''){
 			$data['contract'] = images("contract");
 
-      if($data['contract']=="a:0:{}")
+      if($data['contract']=="a:0:{}"){
         $data['contract']="";
+        unset($data['contract']);
+      }
 		}
 		if($_POST['idcard'] && $_POST['idcard'] != ''){
 			$data['idcard'] = images("idcard");
 
       if($data['idcard']=="a:0:{}")
+      {
         $data['idcard']="";
+        unset($data['idcard']);
+      } 
 		}
           $x['id'] = $_POST['id'];
 			$rs = $db -> where($x) -> save($data);
