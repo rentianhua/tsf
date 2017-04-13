@@ -516,6 +516,14 @@ class HouseController extends ShuipFCMS {
 		   		exit;
 			}
 			//end fix
+		
+		//fix by tianhua on 2017-04-13
+		$house= M('new')->where('id='.$_POST['house_id'])->find();
+		if(strtotime($house['yhq_enddate'])<strtotime(date("y-m-d"))){
+			echo '{"success":68,"info":"购买失败,优惠活动已结束"}';
+		   	exit;
+		}
+		//end fix
 		$data['coupon_name'] = $coupon['title'];
         $data['difu'] = $coupon['vmoney'];
         $data['shifu'] = $coupon['pay'];		
