@@ -121,12 +121,12 @@ $userinfo = $this->userinfo = service("Passport")->getInfo();
         <input value="1" name="idcard" type="hidden">
           <fieldset class="blue pad-10">
             <center>
-              <div id="nameTip" class="onShow">您最多每次可以同时上传 <font color="red">10</font> 张</div>
+              <div id="nameTip" class="onShow">您最多每次可以同时上传 <font color="red">3</font> 张</div>
             </center>
             <div class="picList" id="idcard"></div>
           </fieldset>
           <div class="bk10"></div>
-          <a class="btn am-btn am-btn-danger am-round" onclick="javascript:flashupload1('pics_images', '图片上传','idcard',change_images,'10,gif|jpg|jpeg|png|bmp,1,,,0','Content','6')" herf="javascript:void(0);"><span class="add"></span>选择图片 </a> <span></span>
+          <a class="btn am-btn am-btn-danger am-round" onclick="javascript:flashupload1('pics_images', '图片上传','idcard',change_images,'3,gif|jpg|jpeg|png|bmp,1,,,0','Content','6')" herf="javascript:void(0);"><span class="add"></span>选择图片 </a> <span></span>
       
     </div>
      </div>
