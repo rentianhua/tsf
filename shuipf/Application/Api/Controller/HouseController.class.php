@@ -610,6 +610,7 @@ class HouseController extends ShuipFCMS {
 			$list = M('coupon')->where('userid='.$_GET['userid'])->order('inputtime DESC')->select();
 			foreach($list as $k=>$v){
 				$list[$k]['house_title'] = M('new')->where('id='.$v['house_id'])->getfield('title');
+				$list[$k]['description'] = M('yhquan')->where('id='.$v['coupon_id'])->getfield('description');
 			}
 			if($list){
 				echo json_encode($list,JSON_UNESCAPED_UNICODE);
