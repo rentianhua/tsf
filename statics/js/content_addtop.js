@@ -87,6 +87,7 @@ function flashupload(uploadid, name, textareaid, funcName, args, module, catid, 
 
 
 function flashupload1(uploadid, name, textareaid, funcName, args, module, catid) {
+    var max = args;
 	var args = args ? '&args=' + args : '';
      var setting = '&module=' + module + '&catid=' + catid;
     //检查是否有上传权限
@@ -104,7 +105,7 @@ function flashupload1(uploadid, name, textareaid, funcName, args, module, catid)
                 opacity: 0,
                 ok: function () {
                     if (funcName) {
-                        funcName.apply(this, [this, textareaid]);
+                        funcName.apply(this,[this, textareaid, max]);
                     } else {
                         submit_ckeditor(this, textareaid);
                     }
@@ -116,7 +117,7 @@ function flashupload1(uploadid, name, textareaid, funcName, args, module, catid)
 }
 
 //多图上传，SWF回调函数
-function change_images(uploadid, returnid) {
+function change_images(uploadid, returnid, args) {
     var d = uploadid.iframe.contentWindow;
     var in_content = d.$("#att-status").html().substring(1);
     var in_filename = d.$("#att-name").html().substring(1);
@@ -125,11 +126,23 @@ function change_images(uploadid, returnid) {
     var filenames = in_filename.split('|');
     $('#' + returnid + '_tips').css('display', 'none');
     if (contents == '') return true;
+
     $.each(contents, function (i, n) {
         var ids = parseInt(Math.random() * 10000 + 10 * i);
         var filename = filenames[i].substr(0, filenames[i].indexOf('.'));
         str += "<li style='line-height:124px' id='image" + ids + "'><input type='hidden' name='"+returnid+"_url[]' value='"+n+"'><img src='"+n+"' style='width:120px;height:80px;margin-bottom:-46px'><input type='text' name='" + returnid + "_alt[]' value='" + filename + "' style='width:160px;' class='input nick' onblur=\"if(this.value.replace(' ','') == '') this.value = this.defaultValue;\"> <a href=\"javascript:remove_div('image" + ids + "')\">移除</a> </li>";
     });
+
+    var c = '<li '; // 要计算的字符
+    var regex = new RegExp(c, 'g'); // 使用g表示整个字符串都要匹配
+    var result = str.match(regex);
+    var filecount = !result ? 0 : result.length;
+    if(args){
+        if(filecount > args.split(',')[0]){
+            alert("上传超过最大数量！");
+            return;
+        }
+    }
 
     $('#' + returnid).html(str);
 	$(".nick").keyup(function(){
