@@ -557,56 +557,46 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 
 <div style="margin-top:35px;" class="newwrap">
 
-  <div id="dealRecord" style="width: 100%;">
-
+  <div class="dealRecord" id="dealRecord">
     <div class="title"> <span class="resblockDeal">同小区成交记录</span> </div>
-
-    <div id="resblockDeal">
-    <div>暂无</div>
-
-      <!--<div class="tableHeader">
-
+    <?php
+    $tongqu = M('chuzu')->where('xiaoqu='.$xiaoqu.' and zaizu =0 and area='.$area.' and id <> '.$id)->select();
+  if(!$tongqu){
+    echo '<div>暂无</div>';
+  }else{
+  ?>
+  <div id="resblockDeal">
+      <div class="tableHeader">
         <div class="house">房屋户型</div>
-
         <div class="area">面积</div>
-
         <div class="date">签约日期</div>
-
-        <div class="price">成交价</div>
-
-        <div class="unitPrice">成交单价</div>
-
+        <div class="price">成交租金</div>
+        <div class="unitPrice">成交来源</div>
       </div>
+      <volist name="tongqu" id="vo1">
       <div class="row">
-
-        <div class="house"> <a href="javascript:;"><img src="/statics/taosf/images/list2.jpg" alt=""></a>
-
+        <div class="house"> <a href="{$vo1.url}"><img src='
+        <if condition="$vo1['thumb']">{$vo1.thumb}
+                  <else />
+                  {$config_siteurl}statics/default/images/defaultpic.gif
+                  </if>
+        '></a>
           <div class="desc">
-
-            <div class="frame"> 2室2厅 </div>
-
-            <div class="floor">中楼层/35层 北 精装</div>
-
-            <span class="address">国展苑</span> </div>
-
+            <div class="frame"> {$vo1.shi}室{$vo1.ting}厅 </div>
+            <div class="floor">{$vo1.ceng}/{$vo1.zongceng}层 {$vo1.chaoxiang} 其他</div>
+            <span class="address">{$xiaoqu|getxiaoquName=###}</span> </div>
         </div>
-
-        <div class="area">76.2㎡</div>
-
-        <div class="date">2016-07-14</div>
-
-        <div class="price">232万</div>
-
-        <div class="unitPrice">30446元/平米</div>
-
+        <div class="area">{$vo1.mianji}㎡</div>
+        <div class="date">{$vo1.updatetime|date='Y-m-d',###}</div>
+        <div class="price">{$vo1.zujin}元／月</div>
+        <div class="unitPrice"><if condition="($vo1.pub_type eq 1) AND ($vo1.jjr_id neq '')">经纪人<else/>业主</if></div>
       </div>
-
-      <a href="javascript:;" class="more" style="width: 100%">查看全部成交信息</a> 
-      -->
-      </div>
-
-  </div>
-
+      </volist>      
+       </div>
+       <!--<a class="more" href="javascript:;">查看全部成交信息</a>-->
+  <?php }?>
+  
+    
 </div>
 
 <div class="newwrap">

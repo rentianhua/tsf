@@ -897,10 +897,15 @@ class HouseController extends ShuipFCMS {
 				}
 				$info['daikan'][$k]['username'] = substr_replace($v['username'],'****',3,4);
 			}
-						
+		}
+		if($catid==6||$catid==8){
 			/*同小区成交*/
-			$info['tongqu'] = M($tablename)->where('xiaoqu='.$info['xiaoqu'].' and zaishou=0 and area='.$info['area'].' and id <> '.$info['id'])->select();
-			
+			if($tablename=="ershou")
+			{
+				$info['tongqu'] = M($tablename)->where('xiaoqu='.$info['xiaoqu'].' and zaishou=0 and area='.$info['area'].' and id <> '.$info['id'])->select();
+			}else{
+				$info['tongqu'] = M($tablename)->where('xiaoqu='.$info['xiaoqu'].' and zaizu=0 and area='.$info['area'].' and id <> '.$info['id'])->select();
+			}
 		}
 		if($catid==7){
 			$info['fubiao'] = M($tablename.'_data')->where('id='.$id)->find();
