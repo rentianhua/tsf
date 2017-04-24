@@ -27,11 +27,19 @@ class JingjirenController extends Base {
 		$sql .= "mainarea like '%".$_GET['ct']."%'"; 
 	}
 	if($_GET['bq']){
-		if($sql){
-			$sql .= " and biaoqian like '%".$_GET['bq']."%'"; 
-		}else{
-			$sql .= "biaoqian like '%".$_GET['bq']."%'"; 
-		}		
+		$bq = explode(',', $_GET['bq']);
+		foreach ($bq as $key => $value) {
+			if($sql){
+				$sql .= " and biaoqian like '%".$value."%'"; 
+			}else{
+				$sql .= "biaoqian like '%".$value."%'"; 
+			}		
+		}
+		// if($sql){
+		// 	$sql .= " and biaoqian like '%".$_GET['bq']."%'"; 
+		// }else{
+		// 	$sql .= "biaoqian like '%".$_GET['bq']."%'"; 
+		// }		
 	}
 	if($_GET['kw']){
 		if($sql){
