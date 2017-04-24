@@ -219,7 +219,7 @@ class UserController extends MemberbaseController {
   public function yhq(){
 	  $userinfo = $this -> userinfo = service("Passport") -> getInfo();
 	  $u['userid'] = $userinfo['userid'];
-	  $list = M('coupon')->where($u)->select();
+	  $list = M('coupon')->where($u)->order('inputtime DESC')->select();
 	  $this->assign("list",$list);
       $this->display();
   }
