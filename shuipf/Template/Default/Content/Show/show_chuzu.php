@@ -700,9 +700,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
                   </a>
 
                   <a href="/loupan/p_hyjcaaknv/" class="house-name">{$vo.data.title}</a>
-
-                  <div>{$vo.data.mianji}平米</div>
-
+                  <div class="info">{$vo.data.shi}室{$vo.data.ting}厅  {$vo.data.mianji}平米</div> 
                 </li>
 
               </volist>
