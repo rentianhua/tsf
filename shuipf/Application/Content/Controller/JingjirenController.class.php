@@ -27,6 +27,7 @@ class JingjirenController extends Base {
 		$sql .= "mainarea like '%".$_GET['ct']."%'"; 
 	}
 	if($_GET['bq']){
+		//fix by tianhua on 2017,04-24
 		$bq = explode(',', $_GET['bq']);
 		foreach ($bq as $key => $value) {
 			if($sql){
@@ -39,7 +40,8 @@ class JingjirenController extends Base {
 		// 	$sql .= " and biaoqian like '%".$_GET['bq']."%'"; 
 		// }else{
 		// 	$sql .= "biaoqian like '%".$_GET['bq']."%'"; 
-		// }		
+		// }
+		//end fix
 	}
 	if($_GET['kw']){
 		if($sql){
