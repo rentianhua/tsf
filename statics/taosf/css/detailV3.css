@@ -1374,7 +1374,9 @@ a {
 .header .menu .search input {
 	display: inline-block;
 	width: 71%;
-	height: 60%;
+	height: 25px;
+	font-size:18px;
+	line-height:20px;
 	border: 0;
 	background-color: inherit
 }
