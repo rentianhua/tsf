@@ -1368,27 +1368,27 @@ public function jjrshow()
 				echo '{"success":162,"info":"数据不完整"}';
 				exit;
 			}
-			// $db = M($_POST['table']);
-			// $sql = "(username='".$_POST['username']."' OR jjr_id='".$_POST['userid']."') and ";
-			// if($_POST['table'] == "ershou"){
-			// 	$sql .= 'zaishou=0';
-			// }else{
-			// 	$sql .= 'zaizu=0';
-			// }
-			//$arr = $db -> where($sql) -> select();
+			$db = M($_POST['table']);
+			$sql = "(username='".$_POST['username']."' OR jjr_id='".$_POST['userid']."') and ";
+			if($_POST['table'] == "ershou"){
+				$sql .= 'zaishou=0';
+			}else{
+				$sql .= 'zaizu=0';
+			}
+			$arr = $db -> where($sql) -> select();
 			//fix by tianhua on 2017.03.31
-			$arry1 = M('ershou')->where("(username='".$_POST['username']."' OR jjr_id='".$_POST['userid']."') and zaishou=0")->select();
-        	$arry2 = M('chuzu')->where("(username='".$_POST['username']."' OR jjr_id='".$_POST['userid']."') and zaizu=0")->select();
+			// $arry1 = M('ershou')->where("(username='".$_POST['username']."' OR jjr_id='".$_POST['userid']."') and zaishou=0")->select();
+   //      	$arry2 = M('chuzu')->where("(username='".$_POST['username']."' OR jjr_id='".$_POST['userid']."') and zaizu=0")->select();
 
-			if(count($arry1)>0){
-	          $arr = $arry1;
-	        }
-	        if(count($arry2)>0){
-	           $arr = $arry2;
-	        }
-	        if(count($arry1)>0 && count($arry2)>0){
-	           $arr = array_merge($arry1,$arry2);
-	        }
+			// if(count($arry1)>0){
+	  //         $arr = $arry1;
+	  //       }
+	  //       if(count($arry2)>0){
+	  //          $arr = $arry2;
+	  //       }
+	  //       if(count($arry1)>0 && count($arry2)>0){
+	  //          $arr = array_merge($arry1,$arry2);
+	  //       }
 			//end fix
 			foreach($arr as $k=>$v){
 				$arr[$k]['xiaoquname'] = M('xiaoqu')->where('id='.$v['xiaoqu'])->getfield('title');
