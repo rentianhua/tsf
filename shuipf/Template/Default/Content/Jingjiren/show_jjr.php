@@ -202,8 +202,17 @@ h2 {
 				// $a['zaishou'] = 0;
         $arry1 = M('ershou')->where("(username='".$info['username']."' OR jjr_id='".$info['userid']."') and zaishou=0")->select();
         $arry2 = M('chuzu')->where("(username='".$info['username']."' OR jjr_id='".$info['userid']."') and zaizu=0")->select();
-				$list_cj = array_merge( $arry1,$arry2);
-				if(!$list_cj){
+
+        if(count($arry1)>0){
+          $list_cj = $arry1;
+        }
+        if(count($arry2)>0){
+           $list_cj = $arry2;
+        }
+        if(count($arry1)>0 && count($arry2)>0){
+           $list_cj = array_merge($arry1,$arry2);
+        }
+				if(count($list_cj)==0){
                 echo '<div class="nofang" id="nosold" style="display:block">
                   <p>暂无成交房源。</p>
                 </div>';

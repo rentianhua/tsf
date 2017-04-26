@@ -55,8 +55,12 @@ class UserController extends Base {
 				echo '{"success":60,"info":"至少修改一项"}';
 			    exit;
 				}
-				
+			// update by tianhua on 2017-04-26	
 			$userid = $_POST['userid'];
+			if(!$_POST['modelid']){
+				$_POST['modelid'] = M('member')->where(array("userid" => $userid))->getfield('modelid');
+			}
+			//end fix
 			if($_POST['modelid']==35){
 				$db = M('member_normal');	
 			}else{
@@ -1375,7 +1379,16 @@ public function jjrshow()
 			//fix by tianhua on 2017.03.31
 			$arry1 = M('ershou')->where("(username='".$_POST['username']."' OR jjr_id='".$_POST['userid']."') and zaishou=0")->select();
         	$arry2 = M('chuzu')->where("(username='".$_POST['username']."' OR jjr_id='".$_POST['userid']."') and zaizu=0")->select();
-			$arr = array_merge( $arry1,$arry2);
+
+			if(count($arry1)>0){
+	          $arr = $arry1;
+	        }
+	        if(count($arry2)>0){
+	           $arr = $arry2;
+	        }
+	        if(count($arry1)>0 && count($arry2)>0){
+	           $arr = array_merge($arry1,$arry2);
+	        }
 			//end fix
 			foreach($arr as $k=>$v){
 				$arr[$k]['xiaoquname'] = M('xiaoqu')->where('id='.$v['xiaoqu'])->getfield('title');

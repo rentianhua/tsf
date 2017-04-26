@@ -56,7 +56,7 @@ class MapController extends Base {
 			}
 			$city = M('area')->where('pid=1')->select();
 			foreach($city as $k=>$v){
-				$cnt = M($_POST['fromtable'])->where('city='.$v['id'])->count();
+				$cnt = M($_POST['fromtable'])->where('status=99 and city='.$v['id'])->count();
 				$city[$k]['house_count'] = $cnt;
 			}
 			echo json_encode($city);
