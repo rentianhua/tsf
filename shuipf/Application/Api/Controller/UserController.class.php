@@ -242,13 +242,25 @@ class UserController extends Base {
 		if($_POST['ct'] != ""){
 			$sql .= "mainarea like '%".$_POST['ct']."%'"; 
 		}
-		if($_POST['bq'] != ""){
-			if($sql){
-				$sql .= " and biaoqian like '%".$_POST['bq']."%'"; 
-			}else{
-				$sql .= "biaoqian like '%".$_POST['bq']."%'"; 
-			}		
+		//fix by tianhua on 2017-05-02
+		// if($_POST['bq'] != ""){
+		// 	if($sql){
+		// 		$sql .= " and biaoqian like '%".$_POST['bq']."%'"; 
+		// 	}else{
+		// 		$sql .= "biaoqian like '%".$_POST['bq']."%'"; 
+		// 	}		
+		// }
+		if($_GET['bq']){
+			$bq = explode(',', $_GET['bq']);
+			foreach ($bq as $key => $value) {
+				if($sql){
+					$sql .= " and biaoqian like '%".$value."%'"; 
+				}else{
+					$sql .= "biaoqian like '%".$value."%'"; 
+				}		
+			}
 		}
+		//end fix
 		if($_POST['kw'] != ""){
 			if($sql){
 				$sql .= " and realname like '%".$_POST['kw']."%'"; 
