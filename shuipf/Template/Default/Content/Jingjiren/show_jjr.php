@@ -312,13 +312,79 @@ h2 {
     <div class="right r_wrapper">
       <div class="authentication con-box">
         <h2>服务行程</h2>
-        <!--<p class="bold_t"><span class="bold_">[最新带看]</span>&nbsp;2016-08-21<br/>
-          带客户看房<a target="_blank" href="#">&nbsp;汀兰鹭榭花园 6室4厅 273平 6000万&nbsp;</a>等1套</p>-->
-        <!--<p class="bold_t"><span class="bold_">[最新成交]</span>&nbsp;2016-07-31<br/>
-          成交了<a target="_blank" href="#">&nbsp;百仕达红树西岸 2室2厅 116平 1210万</a></p>-->
-        <p class="overline">暂无</p>
-        <!--<p class="overline">2016-08-21 10:10<br/>
-          带客户看房<a target="_blank" href="#">&nbsp;汀兰鹭榭花园 6室4厅 273平 6000万&nbsp;</a>等1套</p>-->
+         <?php 
+        $arry1 = M('ershou')->where("(username='".$info['username']."' OR jjr_id='".$info['userid']."') and zaishou=0")->order('updatetime DESC')->getField("xiaoqu,updatetime,url,shi,ting,jianzhumianji as mianji,title,1 as type,zongjia as jiage");
+        $arry2 = M('chuzu')->where("(username='".$info['username']."' OR jjr_id='".$info['userid']."') and zaizu=0")->order('updatetime DESC')->getField("xiaoqu,updatetime,url,shi,ting,mianji,title, 2 as type,zujin as jiage");
+
+        if(count($arry1)>0){
+          $list_chenjiao = $arry1;
+        }
+        if(count($arry2)>0){
+           $list_chenjiao = $arry2;
+        }
+        if(count($arry1)>0 && count($arry2)>0){
+           $list_chenjiao = array_merge($arry1,$arry2);
+        }
+
+        $data = M('yuyue')->where('fromuser='.$info['username'])->Field('fromid')->select();
+        $str="";
+        foreach($data as $k=>$v){
+          $str=$str.",'".$v['fromid']."'";
+        }
+        $str = ltrim($str, ",");
+        $list_daikan = M('ershou')->where('id in('.$str.')')->order('updatetime DESC')->getField("xiaoqu,updatetime,url,shi,ting,jianzhumianji as mianji,title,3 as type,zongjia as jiage");
+        
+        if(count($list_chenjiao)>0)
+          $list_service = $list_chenjiao ;
+        if(count($list_daikan)>0){
+          $list_service = $list_daikan;
+        }
+        if(count($list_chenjiao)>0 && count($list_daikan)>0){
+           $list_service = array_merge($list_chenjiao,$list_daikan);
+        }
+
+        foreach ($list_service as $key => $value) {
+          $date[$key] = $value['updatetime'];
+        }
+        array_multisort($date,SORT_DESC, $list_service);
+        $isfirst_daikan=1;
+        $isfirst_chenjiao=1;
+        if(count($list_service)==0){
+           echo '<p class="overline">暂无</p>';
+        }else{ ?>
+          <ul class="deal kuan" id="service_list">
+            <volist name="list_service" id="vo3">
+               <p class="bold_t">
+                  <span class="bold_">
+                      <?php
+                       if($isfirst_daikan==1&&$vo3['type']==3)
+                       {
+                          $isfirst_daikan=0;
+                          echo "[最新带看]";
+                       }
+                       if($isfirst_chenjiao==1&&$vo3['type']!=3)
+                       {
+                          $isfirst_chenjiao=0;
+                          echo "[最新成交]";
+                       }
+                       ?>
+                  </span>&nbsp;{$vo3.updatetime|date='Y-m-d h:i',###}<br/>
+                  <if condition="$vo3['type']==3">
+                      带客户看房
+                  <else />
+                      成交了
+                  </if>
+                  <a target="_blank" href="{$vo3.url}" title="{$vo3.title}" href="#">&nbsp;{$vo3.xiaoqu|getxiaoquName=###}  {$vo3.shi}室{$vo3.ting}厅 {$vo3.mianji}平米  {$vo3['jiage']}<if condition="$vo3['type']==2">元/月<else/>万元</if>&nbsp;</a>等1套</p>
+            </volist>
+          </ul>
+            <?php } ?>
+      <!--   <p class="bold_t"><span class="bold_">[最新带看]</span>&nbsp;2016-08-21<br/>
+          带客户看房<a target="_blank" href="#">&nbsp;汀兰鹭榭花园 6室4厅 273平 6000万&nbsp;</a>等1套</p>
+        <p class="bold_t"><span class="bold_">[最新成交]</span>&nbsp;2016-07-31<br/>
+          成交了<a target="_blank" href="#">&nbsp;百仕达红树西岸 2室2厅 116平 1210万</a></p>
+        <p class="overline">2016-08-21 10:10<br/>
+          带客户看房<a target="_blank" href="#">&nbsp;汀兰鹭榭花园 6室4厅 273平 6000万&nbsp;</a>等1套</p> -->
+        
       </div>
     </div>
   </div>
