@@ -45,7 +45,7 @@ class SmsController extends ShuipFCMS {
 		$rs = M('imgyzm')->where($u)->delete();
         if (!$rs) {
 			
-            echo '{"success":99,"info":"验证码错误"}';
+            echo '{"success":99,"info":"图片验证码错误或者已过期,请重新获取图片验证码!"}';
             exit;
         }
 		$member = M('member');
