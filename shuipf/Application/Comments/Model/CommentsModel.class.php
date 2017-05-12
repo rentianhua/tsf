@@ -81,6 +81,9 @@ class CommentsModel extends Model {
         $mainData['comment_id'] = $data['comment_id'];
         //回复评论id
         $mainData['parent'] = $data['parent'];
+
+        $mainData['score'] = $data['score'];
+
         //如果是空值，直接赋值默认值
         if (empty($mainData['parent'])) {
             $mainData['parent'] = 0;
@@ -88,6 +91,11 @@ class CommentsModel extends Model {
         if (empty($mainData['user_id'])) {
             $mainData['user_id'] = 0;
         }
+
+        if (empty($mainData['score'])) {
+            $mainData['score'] = 0;
+        }
+
         $mainData = $this->token(false)->create($mainData);
         if (!$mainData) {
             return false;

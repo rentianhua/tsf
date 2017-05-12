@@ -297,6 +297,8 @@ h2 {
              <!-- 评论-->
              <!--评论部分-->
              <link href="{$config_siteurl}statics/default/css/article_list.css" rel="stylesheet" type="text/css" />
+             <script type="text/javascript" src="{$config_siteurl}statics/js/comment/raty-2.5.2/lib/jquery.raty.min.js"></script>
+             <script type="text/javascript" src="{$config_siteurl}statics/js/comment/raty-2.5.2/lib/jquery.raty.min.js"></script>
     <div class="duoshuo">
       <h2><span>此评论不代表本站观点</span>大家说</h2>
       <!--评论主体-->

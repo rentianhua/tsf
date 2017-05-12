@@ -90,21 +90,33 @@ class JingjirenController extends Base {
 	          array_push($arr, $value);
 	        }
 	     }
+
 		 $data[$k]['chenjiao_count'] = $chenjiao_chuzu_count + $chenjiao_ershou_count;
 		 $data[$k]['weituo_count'] = $weituo_chuzu_count + $weituo_ershou_count;
 		 $data[$k]['kanfang_count'] = count($arr);
+		 //end fix
+		 
+		 //fix by th on 2017.05.12
+		 $avg_score = M('comments')->where("comment_id='c-88-".$v['userid']."'")->avg("score");
+		 if(!$avg_score || $avg_score ==0){
+		 	$avg_score = 5;
+		 }
+		 $data[$k]["fb_rate"] = round($avg_score * 20);
 		 //end fix
 	}
 
 	foreach ($data as $key => $value) {
 		$chenjiao[$key] = $value['chenjiao_count'];
 		$kanfang[$key] = $value['kanfang_count'];
+		$fb_rate[$key] = $value['fb_rate'];
 	}
 
 	if($_GET['order']=="chenjiao_count_DESC")
 	   array_multisort($chenjiao,SORT_DESC,$data);
 	else if($_GET['order']=="kanfang_count_DESC")
 	   array_multisort($kanfang,SORT_DESC,$data);
+	else if($_GET['order']=="haoping_count_DESC")
+	   array_multisort($fb_rate,SORT_DESC,$data);
 
 	$SEO['title']=cache('Config.sitename');
 	$SEO['description']=cache('Config.siteinfo');

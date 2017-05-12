@@ -184,7 +184,7 @@ foreach($fields as $f){
               </div>
                 </div>
                 <div class="col-2">
-                  <div class="high-praise">好评率<span class="num">100%</span></div>
+                  <div class="high-praise">好评率<span class="num">{$vo.fb_rate}%</span></div>
                   <div class="comment-num"><a href="/index.php?m=jingjiren&a=show_jjr&id={$vo.userid}&t=3">评论{$vo.comm_count}条</a></div>
                 </div>
                 <div class="col-3">

@@ -350,6 +350,12 @@ function getCursortPosition (ctrl) {
                                 if(data.focus){
                                     form.find('input[name="'+data.focus+'"]').focus();
                                 }
+                                jQuery('#star').raty({starOff:"/statics/js/comment/raty-2.5.2/lib/img/star-off.png",
+                                    starOn:"/statics/js/comment/raty-2.5.2/lib/img/star-on.png",
+                                    target:"#score",
+                                    targetKeep:true,
+                                    score:0,
+                                    targetType: 'number'});
                             }
                         });
                     });
@@ -475,6 +481,7 @@ function getCursortPosition (ctrl) {
                                           </div>\
                                           <div class="ds-comment-body">\
                                             <div class="ds-comment-header"><a class="ds-user-name ds-highlight" href="javascript:;;" rel="nofollow" data-userid="' + rs.user_id + '">' +  fn(rs.author) + '</a></div>\
+                                            <div id="star_' + rs.id + '"></div>\
                                             <p>' + rs.content + '</p>\
                                             <div class="ds-comment-footer ds-comment-actions"> \
                                                 <span class="ds-time" title="' + tool.getYearsMonthDay(rs.date * 1000,"yyyy-MM-dd hh:mm:ss") + '">' + tool.getTimeBefore(rs.date * 1000) + '</span> \
@@ -485,10 +492,15 @@ function getCursortPosition (ctrl) {
                                           </div>\
                                       </div>\
                                     </li>');
+                        var id="#star_"+rs.id;
                         //加载回复列表
                         if (rs.child) {
                             addModel.commetnReply(rs);
                         }
+                        jQuery(id).raty({starOff:"/statics/js/comment/raty-2.5.2/lib/img/star-off.png",
+                            starOn:"/statics/js/comment/raty-2.5.2/lib/img/star-on.png",
+                            readOnly:true,
+                            score:rs.score});
                     }
                 });
                 //加载分页
@@ -638,6 +650,8 @@ function getCursortPosition (ctrl) {
                                   <input  type="hidden" name="comment_catid" value="' + init.catid + '" />\
                                   <input  type="hidden" name="author" value="' + init.users.username + '" />\
                                   <input  type="hidden" name="comment_id" value="' + init.id + '" />\
+                                  <input  type="hidden" id="score" name="score" value="0"/>\
+                                  <div id="star"></div>\
 								  <div class="ds-textarea-wrapper ds-rounded-top">\
                                     <textarea class="J_CmFormField" name="content" placeholder="说点什么吧…"></textarea>\
                                   </div>\
@@ -648,6 +662,11 @@ function getCursortPosition (ctrl) {
                                   </div>\
                                 </form>\
                               </div>');
+                jQuery('#star').raty({starOff:"/statics/js/comment/raty-2.5.2/lib/img/star-off.png",
+                    starOn:"/statics/js/comment/raty-2.5.2/lib/img/star-on.png",
+                    target:"#score",
+                    targetKeep:true,
+                    targetType: 'number'});
             },
             //获取用户登陆信息或者显示输入框
             getUser: function () {

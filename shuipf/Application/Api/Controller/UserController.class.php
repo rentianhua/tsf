@@ -290,8 +290,15 @@ class UserController extends Base {
 			 //$x['comment_id'] = 'c-88-'.$v['userid'];	
 			 //$list[$k]['comm_count'] = M('comments')->where($x)->count();
 			  $list[$k]['comm_count'] = M('comments')->where("comment_id='c-88-".$v['userid']."'")->count();
-			  $list[$k]['fb_rate'] = 92;
 			 //end fix
+			 
+			  //fix by th on 2017.05.12
+			  $avg_score = M('comments')->where("comment_id='c-88-".$v['userid']."'")->avg("score");
+			  if(!$avg_score || $avg_score ==0){
+			 	 $avg_score = 5;
+			  }
+			  $list[$k]["fb_rate"] = round($avg_score * 20);
+			  //end fix
 			 
 			 //fix by tianhua on 2017.04.13
 			 $chenjiao_chuzu_count = M('chuzu')-> where("(username='".$list[$k]['info']['username']."' OR jjr_id='".$list[$k]['info']['userid']."') and zaizu=0")->count();

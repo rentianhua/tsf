@@ -208,7 +208,8 @@ class CommentsController extends AdminBase {
             $catid = I('post.comment_catid', 0, 'intval');
             $id = I('post.comment_id', 0, 'intval');
             $post['comment_id'] = "c-{$catid}-{$id}";
-
+            $post['score'] = I('post.score', 0, 'intval');
+            
             $commentsId = $this->db->addComments($post);
             if (false !== $commentsId) {
                 if ($commentsId === -1) {
