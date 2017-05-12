@@ -95,6 +95,7 @@ function isYY($fromid, $fromtable, $username){
   $u["fromid"] =  $fromid;
   $u["fromtable"] = $fromtable;
   $u["username"] = $username;
+  $u["_string"] = "CONCAT(yuyuedate,' ',SPLIT_STR(yuyuetime,'-',2)) >= CURDATE() and zhuangtai<>'已取消'";
   $rs = M('yuyue') -> where($u) -> find();
 
   if($rs){

@@ -261,7 +261,26 @@ class UserController extends MemberbaseController {
       }
     }
   }
+
   //取消预约
+  public function cancelyuyue()
+  {
+    $userinfo=$this->userinfo = service("Passport")->getInfo();
+   
+    $db = M('yuyue');
+    $k['id']=$_GET['id'];
+    $k['username']=$userinfo['username'];
+    $u['zhuangtai'] = "已取消";
+    $rs = $db -> where($k) -> save($u);
+
+    if($rs == 1 && $n){
+      $this->success('取消成功！');
+    }else{
+      $this->error('取消失败！');
+    }
+  }
+
+  //删除预约
   public function delyuyue()
   {
 	  $userinfo=$this->userinfo = service("Passport")->getInfo();

@@ -45,15 +45,19 @@
                   ?>
                   <td>{$vo.zhuangtai}<?php if($expire){echo '<span class="w-red">(已过期)</span>';}?></td>
                   <td>
-                      <if condition="$vo['lock'] neq 1">
-                      
-                      <a href="javascript:;" value="/index.php?g=Member&m=User&a=delyuyue&id={$vo.id}" class="del">
+                      <!-- <if condition="$vo['lock'] neq 1"> -->
+                      <if condition="($expire neq true) and ($vo['zhuangtai'] neq '已取消')">
+                        <a href="javascript:;" value="/index.php?g=Member&m=User&a=cancelyuyue&id={$vo.id}" class="del" >
+                          取消预约
+                        </a>
+                      </if>
+                      <!-- <a href="javascript:;" value="/index.php?g=Member&m=User&a=delyuyue&id={$vo.id}" class="del">
                         <img src="{:C('app_ui')}images/delete.png" title="删除" style="width:20px;height:20px;">
-                      </a>
-                      </if>
-                      <if condition="$vo['lock'] neq 0">
+                      </a> -->
+                      <!-- </if> -->
+                      <!-- <if condition="$vo['lock'] neq 0">
                         <span class="w-red">(已锁)</span> 
-                      </if>
+                      </if> -->
                   </td>
                 </tr>
         </volist>
@@ -67,6 +71,7 @@
               <th>预约人</th>
               <th>看房日期</th>
               <th>状态</th>
+              <th>操作</th>
             </tr>
         </thead>
         <tbody>
@@ -80,7 +85,7 @@
                     </div></td>
                     <td>{$vo.username}</td>
                   <td>{$vo.yuyuedate} {$vo.yuyuetime}</td>
-                  <td>
+                  <td>{$vo.zhuangtai}
 				  <?php 
                   //判断是否过期				  
 				  $str = $vo['yuyuedate']." ".explode('-',$vo['yuyuetime'])[1].":00";
@@ -90,14 +95,20 @@
                   }
 				  if($expire){
 					  echo '<span class="w-red">(已过期)</span>';
-					}else{
-						if($vo['lock'] == 1){
-							echo '已确认';	
-						}else{
-							echo '<a href="/index.php?g=member&m=user&a=confirmyuyue&id='.$vo['id'].'" style="text-decoration:underline">确认</a>';	
-						}
 					}
 					?></td>
+          <td>
+           <?php
+              if($expire){
+            
+              }else{
+                if($vo['lock'] == 1){
+                }else{
+                  echo '<a href="/index.php?g=member&m=user&a=confirmyuyue&id='.$vo['id'].'" style="text-decoration:underline">确认</a>';
+                }
+              }
+            ?>
+          </td>
                 </tr>
         </volist>
     </content>
@@ -111,6 +122,7 @@
               <th>预约人</th>
               <th>看房日期</th>
               <th>状态</th>
+              <th>操作</th>
             </tr>
         </thead>
         <tbody>
@@ -124,7 +136,7 @@
                     </div></td>
                     <td>{$vo.username}</td>
                   <td>{$vo.yuyuedate} {$vo.yuyuetime}</td>
-                  <td>
+                  <td>{$vo.zhuangtai}
 				  <?php 
                   //判断是否过期				  
 				  $str = $vo['yuyuedate']." ".explode('-',$vo['yuyuetime'])[1].":00";
@@ -134,14 +146,19 @@
                   }
 				  if($expire){
 					  echo '<span class="w-red">(已过期)</span>';
-					}else{
-						if($vo['lock'] == 1){
-							echo '已确认';	
-						}else{
-							echo '<a href="/index.php?g=member&m=user&a=confirmyuyue&id='.$vo['id'].'" style="text-decoration:underline">确认</a>';	
-						}
 					}
 					?></td>
+          <td>
+            <?php
+              if($expire){
+              }else{
+                if($vo['lock'] == 1){
+                }else{
+                  echo '<a href="/index.php?g=member&m=user&a=confirmyuyue&id='.$vo['id'].'" style="text-decoration:underline">确认</a>';
+                }
+              }
+            ?>
+          </td>
                 </tr>
         </volist>
     </content>
@@ -154,7 +171,7 @@
 profile.init();
 $(".del").click(function(){
 	var href = $(this).attr("value");
-	if(confirm("确认删除吗？")){
+	if(confirm("确认取消吗？")){
 		window.location.href = href;	
 	}
 });

@@ -508,6 +508,26 @@ public function jjrshow()
 		}
 	}
 	
+	//取消预约
+  public function cancelyuyue()
+  {
+    if(IS_POST){
+		$k['id']=$_POST['id'];
+		$k['userid'] = $_POST['userid'];
+		$k['username']=$_POST['username'];
+		$u['zhuangtai'] = "已取消";
+		$rs = $db -> where($k) -> save($u);
+
+		if($rs == 1 && $n){
+		  echo '{"success":101,"info":"取消成功"}';
+			exit;
+		}else{
+		  echo '{"success":102,"info":"取消失败"}';
+			exit;
+		}
+	}
+  }
+
 	//确认预约
 	public function yuyue_confirm(){
 		if(IS_POST){
@@ -518,6 +538,7 @@ public function jjrshow()
 			$u['fromuser'] = $_POST['username'];
 			$u['id'] = $_POST['id'];
 			$x['lock']=1;
+			$x['zhuangtai'] = "预约成功";
 			M('yuyue')->where($u)->save($x);
 			echo '{"success":185,"info":"确认成功"}';
 				exit;
