@@ -250,8 +250,8 @@ class UserController extends Base {
 		// 		$sql .= "biaoqian like '%".$_POST['bq']."%'"; 
 		// 	}		
 		// }
-		if($_GET['bq']){
-			$bq = explode(',', $_GET['bq']);
+		if($_POST['bq']){
+			$bq = explode(',', $_POST['bq']);
 			foreach ($bq as $key => $value) {
 				if($sql){
 					$sql .= " and biaoqian like '%".$value."%'"; 
