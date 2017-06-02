@@ -85,6 +85,14 @@ class IndexController extends Base {
         }
         //取得树状结构数组
         $treeArray = $this->get_tree_array();
+
+        //update by tianhua on 2017-06-02
+        $fromuser =  M("member") -> where("userid= '".$id."'")->find();
+        $username = service("Passport")->username?:'xxxxxx';
+        $sql = "zhuangtai='预约成功' and username = '".$username."' and fromuser='".$fromuser["username"]."'";
+        $isyuyue = M("yuyue")->where($sql)->count() > 0;
+        //end update
+
         //最终返回数组
         $return = array(
             //配置
@@ -101,6 +109,7 @@ class IndexController extends Base {
                 'name' => service("Passport")->username ? : '',
                 'email' => service("Passport")->email ? : '',
                 'avatar' => service("Passport")->userid ? service("Passport")->getUserAvatar(service("Passport")->userid) : '',
+                'isyuyue' => $isyuyue,
             ),
             //评论列表 去除键名，不然json输出会影响排序
             'response' => array_values($treeArray),

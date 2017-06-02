@@ -313,6 +313,12 @@ function getCursortPosition (ctrl) {
                         if (init.DEBUG) {
                             console.log('提交信息', form);
                         }
+                        //没有预约成功过的就不能评论
+                        if(init.users.isyuyue == false){
+                            alert('您没有预约过此经纪人，暂时不能评论！');
+                            return;
+                        }
+
                         if (init.LOCK) {
                             return;
                         }
