@@ -39,25 +39,20 @@
                   //判断是否过期				  
 				  $str = $vo['yuyuedate']." ".explode('-',$vo['yuyuetime'])[1].":00";
                   $yuyuetime = strtotime($str);
+                  $expire = 'false';
                   if( time()>$yuyuetime ){
-                    $expire = true;
+                    $expire = 'true';
                   }
                   ?>
-                  <td>{$vo.zhuangtai}<?php if($expire){echo '<span class="w-red">(已过期)</span>';}?></td>
+                  <td>{$vo.zhuangtai}<?php if($expire=='true'){echo '<span class="w-red">(已过期)</span>';}?></td>
                   <td>
-                      <!-- <if condition="$vo['lock'] neq 1"> -->
-                      <if condition="($expire neq true) and ($vo['zhuangtai'] neq '已取消')">
-                        <a href="javascript:;" value="/index.php?g=Member&m=User&a=cancelyuyue&id={$vo.id}" class="del" >
-                          取消预约
-                        </a>
+                      <if condition="$expire eq 'false'">
+                         <if condition="$vo['zhuangtai'] neq '已取消'">
+                          <a href="javascript:;" value="/index.php?g=Member&m=User&a=cancelyuyue&id={$vo.id}" class="del" >
+                            取消预约
+                          </a>
+                        </if>
                       </if>
-                      <!-- <a href="javascript:;" value="/index.php?g=Member&m=User&a=delyuyue&id={$vo.id}" class="del">
-                        <img src="{:C('app_ui')}images/delete.png" title="删除" style="width:20px;height:20px;">
-                      </a> -->
-                      <!-- </if> -->
-                      <!-- <if condition="$vo['lock'] neq 0">
-                        <span class="w-red">(已锁)</span> 
-                      </if> -->
                   </td>
                 </tr>
         </volist>
@@ -102,10 +97,14 @@
               if($expire){
             
               }else{
-                if($vo['lock'] == 1){
-                }else{
+                if($vo['zhuangtai']=="新预约")
+                {
                   echo '<a href="/index.php?g=member&m=user&a=confirmyuyue&id='.$vo['id'].'" style="text-decoration:underline">确认</a>';
                 }
+                // if($vo['lock'] == 1 ){
+                // }else{
+                //   echo '<a href="/index.php?g=member&m=user&a=confirmyuyue&id='.$vo['id'].'" style="text-decoration:underline">确认</a>';
+                // }
               }
             ?>
           </td>
@@ -152,9 +151,12 @@
             <?php
               if($expire){
               }else{
-                if($vo['lock'] == 1){
-                }else{
-                  echo '<a href="/index.php?g=member&m=user&a=confirmyuyue&id='.$vo['id'].'" style="text-decoration:underline">确认</a>';
+                // if($vo['lock'] == 1){
+                // }else{
+                //   echo '<a href="/index.php?g=member&m=user&a=confirmyuyue&id='.$vo['id'].'" style="text-decoration:underline">确认</a>';
+                // }
+                if($vo['zhuangtai']=="新预约"){
+                   echo '<a href="/index.php?g=member&m=user&a=confirmyuyue&id='.$vo['id'].'" style="text-decoration:underline">确认</a>';
                 }
               }
             ?>
@@ -172,7 +174,14 @@ profile.init();
 $(".del").click(function(){
 	var href = $(this).attr("value");
 	if(confirm("确认取消吗？")){
-		window.location.href = href;	
+    $.ajax({
+      type: "get",
+      global: false, // 禁用全局Ajax事件.
+      url: href,
+      success: function (data) {
+          window.location.href="/index.php?g=Member&m=User&a=yuyue&t=1";     
+      }
+    });
 	}
 });
 </script>
