@@ -175,7 +175,7 @@ $('.reg_type').iCheck({
 
             $yy = isYY($id,"ershou", $userinfo['username']);
 
-            if($yy){
+            if($yy==1){
 
               echo '<button class="am-btn am-btn-xs">已预约</button>';
 

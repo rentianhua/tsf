@@ -516,9 +516,9 @@ public function jjrshow()
 		$k['userid'] = $_POST['userid'];
 		$k['username']=$_POST['username'];
 		$u['zhuangtai'] = "已取消";
-		$rs = $db -> where($k) -> save($u);
+		$rs = M('yuyue')->where($k)->save($u);
 
-		if($rs == 1 && $n){
+		if($rs == 1){
 		  echo '{"success":101,"info":"取消成功"}';
 			exit;
 		}else{
@@ -1472,6 +1472,19 @@ public function jjrshow()
 			    exit;
 			}
 			
+			//update by tianhua on 2017-06-02
+	        $fromuser =  M("member") -> where("userid= '".$_POST['id']."'")->find();
+	        $sql = "zhuangtai='预约成功' and username = '".$_POST['author']."' and fromuser='".$fromuser["username"]."'";
+	        $isyuyue = M("yuyue")->where($sql)->count() > 0;
+	        if($_POST['id'] == $_POST['user_id'])
+	        	$isyuyue = true;
+	        if($isyuyue == false)
+	        {
+	        	echo '{"success":173,"info":"您没有预约过此经纪人，暂时不能评论！"}';
+			    exit;
+	        }
+	        //end update
+
 			$data['comment_id'] = "c-88-".$_POST['id'];			
 			$data['author'] = $_POST['author'];
 			$data['user_id'] = $_POST['user_id'];

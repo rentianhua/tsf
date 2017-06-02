@@ -91,6 +91,8 @@ class IndexController extends Base {
         $username = service("Passport")->username?:'xxxxxx';
         $sql = "zhuangtai='预约成功' and username = '".$username."' and fromuser='".$fromuser["username"]."'";
         $isyuyue = M("yuyue")->where($sql)->count() > 0;
+        if($fromuser["modelid"] ==36 )
+            $isyuyue = true;
         //end update
 
         //最终返回数组

@@ -796,7 +796,8 @@ class HouseController extends ShuipFCMS {
 			$db = M('yuyue');
 			$k['username'] = $_POST['username'];
 			$k['fromid'] = $_POST['fromid'];
-			$k['fromtable'] = $_POST['fromtable'];			
+			$k['fromtable'] = $_POST['fromtable'];
+			$k["_string"] = "CONCAT(yuyuedate,' ',SPLIT_STR(yuyuetime,'-',2)) >= NOW() and zhuangtai<>'已取消'";		
 			$f = M('yuyue') -> where($k) -> find();
 			
 			if($f){
@@ -806,8 +807,8 @@ class HouseController extends ShuipFCMS {
 				if(!$_POST['t'] || $_POST['t'] == '' || $_POST['t'] != 1){
 					echo '{"success":179,"info":"没有预约"}';
 				}
-				
 			}
+
 			//t=1表示新增预约
 			if(!$_POST['t'] || $_POST['t'] == '' || $_POST['t'] != 1){
 				exit;
