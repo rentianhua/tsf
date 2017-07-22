@@ -983,9 +983,11 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
   function check(){
 
     var iswrong = false;
+    var d = new Date();
+    nowh=d.getHours();
+    nowdate=d.getDate()
 
-    var nowh = <?php echo (int)(date("H"));?>;
-	if($("div[class='checked'] input").attr('id') == "d1"){
+	 if($('input:radio[name="yuyuedate"]:checked').val().split('-')[2]==nowdate){
 		if(nowh >= 15){
 			alert("您预约的时间已经过去了哦~");
 			var iswrong = true;
@@ -993,7 +995,7 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 			alert("您预约的时间已经过去了哦~");
 			var iswrong = true;
 		}
-	}
+	 }
     if(!iswrong){
 
       $.ajax({
