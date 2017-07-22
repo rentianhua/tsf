@@ -792,7 +792,7 @@ class HouseController extends ShuipFCMS {
 	
 	//添加预约
 	public function yuyue_add(){
-		if(IS_POST){						
+		if(IS_POST){
 			$db = M('yuyue');
 			$k['username'] = $_POST['username'];
 			$k['fromid'] = $_POST['fromid'];
@@ -817,6 +817,21 @@ class HouseController extends ShuipFCMS {
 				echo '{"success":94,"info":"数据不完整"}';
 				exit;
 			}
+
+			if(date("Y-m-d",time()==$_POST['yuyuedate']))
+			{
+				if($_POST['yuyuetime'] == "09:00-12:00" && date("h",time())>=12)
+				{
+					echo '{"success":97,"info":"您预约的时间已经过去了哦~"}';
+					exit;
+				}
+				if(date("h",time())>=15)
+				{
+					echo '{"success":97,"info":"您预约的时间已经过去了哦~"}';
+					exit;
+				}
+			}
+
 			$data = $db->create($_POST);
 			$data['fromuser'] = M('member')->where('userid='.$_POST['fromuserid'])->getfield('username');
 			$data['zhuangtai'] = '新预约';
