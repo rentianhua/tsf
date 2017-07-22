@@ -94,8 +94,8 @@
 </style>
 <div class="service-banner">
   <h2>掌上淘深房</h2>
-  <a class="phone" href="#"><span class="mui-icon mui-icon-phone"></span>安卓版下载</a> 
-  <a class="app" href="#">ios版下载</a>
+  <a class="phone" href="http://a.app.qq.com/o/simple.jsp?pkgname=com.dumu.housego"><span class="mui-icon mui-icon-phone"></span>安卓版下载</a>
+  <a class="app" href="https://itunes.apple.com/app/id1184368347">ios版下载</a>
   <div style="text-align:center">永久免费 深圳不动产自主交易中心</div>
 </div>
 <div class="service-step">

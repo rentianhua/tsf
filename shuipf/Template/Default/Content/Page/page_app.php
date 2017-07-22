@@ -14,8 +14,7 @@
 					<span class="am-icon-android am-icon-md"></span>
 				</div>
 				<div class="am-u-sm-9">
-					<div>Android版下载</div>
-					<div>当前版本:1.0</div>
+					<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.dumu.housego">Android版下载</a>
 				</div>
 			</a>
 		</div>
@@ -25,8 +24,7 @@
 					<span class="am-icon-apple am-icon-md"></span>
 				</div>
 				<div class="am-u-sm-9">
-					<div>iPhone版下载</div>
-					<div>当前版本:1.0</div>
+					<a href="https://itunes.apple.com/app/id1184368347">iPhone版下载</a>
 				</div>
 			</a>
 		</div>
