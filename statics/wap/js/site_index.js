@@ -1314,7 +1314,7 @@
         var i;
         e.exports = function(e, t) {
             function a() {
-                var e = $("" + '<div class="download_fixed">' + '<a href="javascript:;" data-mark="download_close_btn" class="close">关闭</a>' + '<a href="javascript:;" data-mark="download_tip_btn">' + '<div class="logo">掌上淘深房</div>' + '<div class="slog"><p class="title">淘深房APP</p><p class="sub-title">市场行情，一手掌握!</p></div>' + '<div class="btn">免费下载</div>' + "</a>" + "</div>");
+                var e = $("" + '<div class="download_fixed">' + '<a href="javascript:;" data-mark="download_close_btn" class="close">关闭</a>' + '<a href="http://www.taoshenfang.com/index.php?a=lists&catid=16" data-mark="download_tip_btn">' + '<div class="logo">掌上淘深房</div>' + '<div class="slog"><p class="title">淘深房APP</p><p class="sub-title">市场行情，一手掌握!</p></div>' + '<div class="btn">免费下载</div>' + "</a>" + "</div>");
                 var t = e.getMark();
                 t.one("download_close_btn").on("tap", f);
                 t.one("download_tip_btn").on("tap", l);

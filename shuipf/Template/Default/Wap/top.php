@@ -1,6 +1,6 @@
 <div class="top-menu1">
 <a href="/" style="float:left;margin: 13px 20px;color: #E84A01"><span class="mui-icon mui-icon-home"></a>
-    <a class="app actDownload" href="javascript:;" style="float: right;margin:0 10px;">
+    <a class="app actDownload" href="http://www.taoshenfang.com/index.php?a=lists&catid=16" style="float: right;margin:0 10px;">
         <span class="mui-icon mui-icon-arrowthindown" style="color: #E84A01;"></span><p>APP</p>
     </a>
     <a class="my actIamlink" href="javascript:;">

@@ -198,17 +198,17 @@ var register = {
             }
         });
 		//真实姓名
-        $rtruename.blur(function () {
-            $(this).removeClass('input_focus');
-            $(this).triggerHandler('keyup');
-        }).keyup(function () {
-            if ($(this).val() == '') {
-                $mtruename.html('<span class="icon">请输入真实姓名</span>');
-                return false;
-            } else {
-                $mtruename.html('<span class="rightIcon">√ 通过验证</span>');
-            }
-        });
+        // $rtruename.blur(function () {
+        //     $(this).removeClass('input_focus');
+        //     $(this).triggerHandler('keyup');
+        // }).keyup(function () {
+        //     if ($(this).val() == '') {
+        //         $mtruename.html('<span class="icon">请输入真实姓名</span>');
+        //         return false;
+        //     } else {
+        //         $mtruename.html('<span class="rightIcon">√ 通过验证</span>');
+        //     }
+        // });
 		$submit.click(function () {			
 			//注册类型检查
 			var zclxcheck = false;
