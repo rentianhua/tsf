@@ -44,7 +44,7 @@
 </div>
 <div class="am-container">
   <br>
-   Copyright By 淘深房 ©2016 深圳市瑞安兴业房地产顾问有限公司 
+   Copyright By 淘深房 ©2016 深圳市淘深房科技有限公司 
 	&nbsp;&nbsp;&nbsp;<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030602000320"><img src="{:C('app_ui')}images/beian.png"/>粤公网安备 44030602000320号</a>&nbsp;&nbsp;&nbsp;
    粤ICP备16061979号-1
    
